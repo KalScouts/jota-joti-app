@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta name="theme-color" content="#5a2c84">
+    <title>JOTA-JOTI Dashboard</title>
+
+    <!-- PWA / Add to Home Screen -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- iOS (iPhone / iPad) home screen icon + behaviour -->
+    <link rel="apple-touch-icon" href="photo1.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="JOTA-JOTI">
+
+    <!-- Android / Chrome -->
+    <link rel="icon" type="image/png" href="photo1.png">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Windows tiles -->
+    <meta name="msapplication-TileColor" content="#5a2c84">
+    <meta name="msapplication-TileImage" content="photo1.png">
+
+    <!-- Generic favicon -->
+    <link rel="icon" href="photo1.png" type="image/png">
+    <!-- ============================================================ -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header" id="main-nav">
+        <div class="header-inner">
+            <img src="https://scouts.com.au/wp-content/uploads/2020/05/full-colour-icon.jpg" alt="Scouts Australia">
+            <img src="https://www.jotajoti.info/themes/custom/jota_joti/logo.svg" alt="JOTA-JOTI">
+
+            <button id="top-login-button" type="button" onclick="openPreLogin()">LOGIN</button>
+            <button id="top-account-button" type="button" onclick="logout()">LOG OUT</button>
+        </div>
+    </div>
+
+    <div class="credit-pill">Made by Hunter Miller from Boulder Scout Hall</div>
+
+
+
+    <!-- ==========================================================
+         MAIN COUNTDOWN / PREP PORTAL
+         ========================================================== -->
+    <div id="portal-page-wrap" class="prep-page">
+        <div class="prep-container">
+
+            <div id="portal-greeting" class="portal-greeting">
+                <div class="portal-greeting-line" id="portal-greeting-line">WELCOME</div>
+                <div class="portal-greeting-name" id="portal-greeting-name">Scout</div>
+                <p class="portal-greeting-help">
+                    You are signed in. Before the final 24 hours, the countdown
+                    remains the main page and your account stays ready in the background.
+                </p>
+                <div id="portal-status" class="portal-status">
+                    Your login has been remembered on this device.
+                </div>
+            </div>
+
+            <div class="prep-card">
+                <div class="prep-logos">
+                    <img src="https://scouts.com.au/wp-content/uploads/2020/05/full-colour-icon.jpg" alt="Scouts Australia">
+                    <img src="https://www.jotajoti.info/themes/custom/jota_joti/logo.svg" alt="JOTA-JOTI">
+                </div>
+
+                <h1 class="prep-title">JOTA-JOTI Prep Portal</h1>
+                <p class="prep-subtitle">
+                    Get ready for JOTA-JOTI 2026.
+                </p>
+
+                <div class="warning-box">
+                    <strong>Note:</strong> Don't remove this app before JOTA-JOTI!
+                    It will automatically update to work exactly as you need it on the day.
+                </div>
+
+                <h2 class="countdown-title">Countdown to JOTA-JOTI 2026</h2>
+
+                <div class="countdown-container" id="countdown" aria-live="polite">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <label>Days</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <label>Hours</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="mins">00</span>
+                        <label>Mins</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="secs">00</span>
+                        <label>Secs</label>
+                    </div>
+                </div>
+
+                <div class="dates">
+                    <strong>Dates:</strong> 16 - 18 October 2026
+                </div>
+
+                <div id="final-day-banner" class="final-day-banner">
+                    The final 24 hours have started. The dashboard is now active.
+                </div>
+
+                <div class="portal-network">
+                    <span id="portal-network-dot" class="portal-network-dot"></span>
+                    <span id="portal-network-text">Checking connection…</span>
+                </div>
+            </div>
+
+            <div class="prep-card">
+                <h3 class="activity-heading">JOTA-JOTI Expression of Interest</h3>
+                <p class="activity-copy">
+                    Complete the Kalgoorlie Scout Group Expression of Interest form with a parent or guardian.
+                </p>
+
+                <details open>
+                    <summary>Tap here to open the Expression of Interest Form</summary>
+                    <div class="activity-frame-wrap">
+                        <iframe
+                            class="activity-frame"
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSevs4K7aNGjPOSBk9tjFZtShpqkRQUAOjVetaInhpaaOARFrA/viewform?embedded=true"
+                            allowfullscreen
+                            webkitallowfullscreen
+                            mozallowfullscreen
+                            msallowfullscreen
+                            title="Kalgoorlie Scout Group JOTA-JOTI Expression of Interest"
+                        ></iframe>
+                    </div>
+                </details>
+
+                <p style="margin-top:14px;text-align:center;">
+                    <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSevs4K7aNGjPOSBk9tjFZtShpqkRQUAOjVetaInhpaaOARFrA/viewform?usp=header" target="_blank" rel="noopener noreferrer">Open the form in a new tab</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard-page-wrap" class="container" style="display:none;">
+
+        <div id="login-screen">
+            <h2 class="login-title">Enter Scout PIN</h2>
+            <p class="login-sub">JOTA-JOTI Dashboard</p>
+            <p class="prelogin-note" id="prelogin-note" style="display:none;">
+                Enter your 4-digit PIN to pre-login. If you sign in before the final 24 hours,
+                you will be returned to the countdown page with your name shown.
+            </p>
+
+            <div class="status-line" id="status-line">
+                <span class="status-dot" id="status-dot"></span>
+                <span id="status-text">Checking connection…</span>
+            </div>
+            <div class="pin-keyboard-hint" id="pin-keyboard-hint" aria-live="polite">Use the number buttons or type your 4-digit PIN on a keyboard.</div>
+
+            <div class="pin-display" id="pin-display" role="img" aria-label="Four digit PIN"></div>
+
+            <div class="numpad">
+                <button class="num-btn" type="button" data-key="1" onclick="addPin(1)"><span class="num-main">1</span></button>
+                <button class="num-btn" type="button" data-key="2" onclick="addPin(2)"><span class="num-main">2</span></button>
+                <button class="num-btn" type="button" data-key="3" onclick="addPin(3)"><span class="num-main">3</span></button>
+                <button class="num-btn" type="button" data-key="4" onclick="addPin(4)"><span class="num-main">4</span></button>
+                <button class="num-btn" type="button" data-key="5" onclick="addPin(5)"><span class="num-main">5</span></button>
+                <button class="num-btn" type="button" data-key="6" onclick="addPin(6)"><span class="num-main">6</span></button>
+                <button class="num-btn" type="button" data-key="7" onclick="addPin(7)"><span class="num-main">7</span></button>
+                <button class="num-btn" type="button" data-key="8" onclick="addPin(8)"><span class="num-main">8</span></button>
+                <button class="num-btn" type="button" data-key="9" onclick="addPin(9)"><span class="num-main">9</span></button>
+                <div></div>
+                <button class="num-btn" type="button" data-key="0" onclick="addPin(0)"><span class="num-main">0</span></button>
+                <button class="num-btn del-btn" type="button" data-key="Backspace" onclick="clearPin()"><span class="num-main">DEL</span></button>
+            </div>
+
+            <div class="login-error" id="login-error"></div>
+            <button class="login-submit-btn retry-btn" id="retry-btn" onclick="retryLogin()" style="display:none;">Try Again</button>
+
+            <button class="guest-btn" onclick="fetchUserData('guest')">Continue as Guest</button>
+            <button class="signup-btn" id="signup-button" onclick="openSignupForm()">I DON'T HAVE AN ACCOUNT</button>
+            <button class="back-to-timer-btn" id="back-to-timer-button" onclick="returnToTimer()" style="display:none;">BACK TO TIMER</button>
+            <button class="forget-btn" id="forget-btn" onclick="forgetSavedPin()" style="display:none;">Not you? Forget saved PIN</button>
+        </div>
+
+        <div id="dashboard-screen">
+            <div class="dash-topbar">
+                <div class="dash-greeting">
+                    <div class="dash-greeting-line" id="dash-greeting-line">Welcome</div>
+                    <div class="dash-greeting-name" id="dash-greeting-name">Scout</div>
+                </div>
+                <button class="logout-btn" onclick="logout()">Log Out</button>
+            </div>
+            <div class="section-title">Categories</div>
+            <div class="grid" id="category-grid"></div>
+        </div>
+
+        <div id="submenu-screen">
+            <button class="back-dash-btn" onclick="showDashboard()">Back to Categories</button>
+            <div class="section-title" id="submenu-title">Select Option</div>
+            <div class="grid" id="submenu-grid"></div>
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================================
+         ORIGINAL-STYLE MOBILE PWA INSTALL OVERLAY
+         ========================================================== -->
+    <div id="mobile-install-overlay" class="mobile-install-overlay">
+        <div class="mobile-install-box">
+            <img src="photo1.png" alt="App Logo">
+            <h2>Add JOTA-JOTI to Your Home Screen</h2>
+            <p>
+                This portal only opens once it's installed as an app on your device.
+                Follow the steps below, then come back to this tab. It will unlock itself automatically.
+            </p>
+
+            <div id="ios-install-instructions" class="install-instructions"></div>
+
+            <div id="android-install-instructions" class="install-instructions"></div>
+
+            <button id="install-native-btn" class="install-native-btn" type="button" onclick="installPWA()">
+                Install Now
+            </button>
+
+            <button class="install-recheck-btn" type="button" onclick="recheckInstall()">
+                I've added it, check again
+            </button>
+        </div>
+    </div>
+
+    <div id="welcome-screen">
+        <div class="welcome-msg" id="welcome-name">Welcome!</div>
+        <div class="spinner" aria-hidden="true"></div>
+        <div class="loading-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+        <p id="welcome-loading-text" style="margin-top: 25px; font-size: 15px; opacity: 0.9; font-weight: 500;">Loading categories &amp; links...</p>
+    </div>
+
+    <div id="session-refresh-loader" class="session-refresh-loader" aria-live="polite" aria-hidden="true">
+        <span class="mini-spinner" aria-hidden="true"></span>
+        <span id="session-refresh-text">Updating your dashboard…</span>
+    </div>
+
+    <div id="sheet-overlay" aria-hidden="true"></div>
+    <div id="sheet-popup">
+        <div class="popup-handle"></div>
+        <div class="popup-title" id="sheet-title">Details</div>
+        <div id="sheet-body"></div>
+    </div>
+
+    <div id="embed-screen">
+        <div class="embed-header">
+            <button class="back-dash-btn" onclick="closeEmbeddedSite()" type="button">Back</button>
+            <div class="embed-title-wrap">
+                <div class="embed-title" id="embed-title">Site</div>
+                <div class="embed-loading-status" id="embed-loading-status">Preparing site…</div>
+            </div>
+            <button id="embed-external-btn" class="embed-external-btn" type="button" onclick="openEmbeddedExternally()" style="display:none;">Open in browser</button>
+            <div class="embed-live-dot" id="embed-live-dot" aria-hidden="true"></div>
+        </div>
+        <div class="embed-stage">
+            <div id="embed-loading" class="embed-loading" aria-live="polite">
+                <div class="embed-spinner" aria-hidden="true"></div>
+                <div class="embed-loading-title">Opening site</div>
+                <div class="embed-loading-subtitle">Loading the content from the dashboard…</div>
+            </div>
+            <iframe id="embed-frame" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-downloads allow-presentation allow-top-navigation-by-user-activation" allow="autoplay; clipboard-read; clipboard-write; fullscreen; picture-in-picture" allowfullscreen title="Embedded dashboard site"></iframe>
+        </div>
+    </div>
+
+    <script src="site-config.js"></script>
+    <script src="script.js" defer></script>
+</body>
+
+
+
+</html>

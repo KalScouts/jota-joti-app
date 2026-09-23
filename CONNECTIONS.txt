@@ -1,0 +1,13 @@
+KALGOORLIE SCOUT GROUP — SITE CONNECTIONS
+
+GitHub repository:
+https://github.com/KalScouts/jota-joti-app
+
+Expected GitHub Pages URL:
+https://kalscouts.github.io/jota-joti-app/
+
+Apps Script API:
+https://script.google.com/macros/s/AKfycbyIHdl2mm2LzxCIndnlN3AAaxaB0sC1XxTjub487xZuYUF3ad9vU0eG1KFIeFMdlpuY/exec
+
+Google Form:
+https://docs.google.com/forms/d/e/1FAIpQLSevs4K7aNGjPOSBk9tjFZtShpqkRQUAOjVetaInhpaaOARFrA/viewform?usp=header

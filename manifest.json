@@ -1,0 +1,36 @@
+{
+  "id": "./",
+  "name": "Kalgoorlie Scout Group \u2014 JOTA-JOTI 2026",
+  "short_name": "Kalgoorlie JOTA-JOTI",
+  "description": "JOTA-JOTI 2026 dashboard for Kalgoorlie Scout Group",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#f4f6f8",
+  "theme_color": "#5a2c84",
+  "lang": "en-AU",
+  "categories": [
+    "education",
+    "social",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "photo1.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "photo1.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
