@@ -1,10 +1,10 @@
-        const API_URL = window.JOTA_JOTI_CONFIG?.apiUrl || "https://script.google.com/macros/s/AKfycbyIHdl2mm2LzxCIndnlN3AAaxaB0sC1XxTjub487xZuYUF3ad9vU0eG1KFIeFMdlpuY/exec";
+        const API_URL = (window.JOTA_CONFIG && window.JOTA_CONFIG.API_URL) || "https://script.google.com/macros/s/AKfycbwjR0DWFnY60L7AKLuJ9YqeeaxPcXVs_2RyzIdy6khzMwSiQ2JnAjc_xc6okIPk0iUM/exec";
 
         /* ==========================================================
            COMBINED PORTAL CONFIGURATION
            ========================================================== */
 
-        const SIGNUP_FORM_URL = window.JOTA_JOTI_CONFIG?.eoiFormUrl || "https://docs.google.com/forms/d/e/1FAIpQLSevs4K7aNGjPOSBk9tjFZtShpqkRQUAOjVetaInhpaaOARFrA/viewform?usp=header";
+        const SIGNUP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeBhtFuVNzjqtAFOeluNfiA1hFPr1JXXfSx9xZcnivSV1fiUw/viewform?usp=header";
         const EVENT_START_ISO = "2026-10-16T00:00:00+08:00";
         const EVENT_START_MS = new Date(EVENT_START_ISO).getTime();
         const FINAL_DAY_MS = EVENT_START_MS - (24 * 60 * 60 * 1000);
@@ -80,14 +80,30 @@
             } catch (_) {}
         })();
 
+        async function fetchLoginResponse(pin) {
+            const response = await fetch(`${API_URL}?action=login&pin=${encodeURIComponent(pin)}&_=${Date.now()}`, { cache: 'no-store' });
+            const body = await response.text();
+
+            let data;
+            try {
+                data = JSON.parse(body);
+            } catch (_) {
+                throw new Error(`Sign-in service returned HTTP ${response.status} instead of JSON.`);
+            }
+
+            if (!response.ok) {
+                throw new Error(data && data.error ? data.error : `Sign-in service returned HTTP ${response.status}.`);
+            }
+
+            return data;
+        }
+
         (function startLoginPrefetch() {
             try {
                 const pin = localStorage.getItem(SAVED_PIN_KEY);
                 if (!pin || !/^\d{4}$/.test(pin)) return;
                 loginPrefetchPin = pin;
-                loginPrefetch = fetch(`${API_URL}?action=login&pin=${encodeURIComponent(pin)}&_=${Date.now()}`, { cache: 'no-store' })
-                    .then(r => r.json())
-                    .catch(() => null);
+                loginPrefetch = fetchLoginResponse(pin).catch(() => null);
             } catch (_) {}
         })();
 
@@ -99,8 +115,7 @@
                 const early = await pending;
                 if (early) return early;
             }
-            const response = await fetch(`${API_URL}?action=login&pin=${encodeURIComponent(pin)}&_=${Date.now()}`, { cache: 'no-store' });
-            return await response.json();
+            return await fetchLoginResponse(pin);
         }
 
         function saveDashboardCache(pin, data) {
@@ -166,7 +181,6 @@
                 }
             }
 
-            window.setTimeout(() => checkPortalConnection(true), 4200);
         }
 
         function setDashboardView(view) { dashboardView = view; }

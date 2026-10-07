@@ -12,17 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ==========================================================================
-           DYNAMIC DESIGN SYSTEM & FLUID CSS VARIABLES
-           ========================================================================== */
         :root {
-            /* Brand Color Palette */
             --color-primary-base: #5a2c84;
             --color-primary-light: #f3ebf8;
             --color-primary-hover: #47216a;
             --color-primary-dark: #2d1345;
-            
-            /* Neutral Colors (Light Mode Default) */
             --color-neutral-bg: #f8fafc;
             --color-neutral-card: #ffffff;
             --color-neutral-text-main: #0f172a;
@@ -30,26 +24,20 @@
             --color-neutral-border: #e2e8f0;
             --color-neutral-code-bg: #0f172a;
             --color-neutral-code-text: #f8fafc;
-            
-            /* Status Colors */
             --color-success-base: #15803d;
             --color-success-bg: #f0fdf4;
             --color-warning-base: #b45309;
             --color-warning-bg: #fffbeb;
             --color-danger-base: #b91c1c;
             --color-danger-bg: #fef2f2;
-            
-            /* Typography Scale (Clean responsive rem scale for all devices) */
             --font-family-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            --font-size-xs: 0.75rem;    /* 12px */
-            --font-size-sm: 0.875rem;   /* 14px */
-            --font-size-base: 1rem;     /* 16px */
-            --font-size-lg: 1.125rem;   /* 18px */
-            --font-size-xl: 1.25rem;    /* 20px */
-            --font-size-2xl: 1.5rem;    /* 24px */
-            --font-size-3xl: 1.875rem;  /* 30px */
-            
-            /* Fluid Spacing Scale */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
             --spacing-1: clamp(0.2rem, 1vw, 0.25rem);
             --spacing-2: clamp(0.375rem, 1.5vw, 0.5rem);
             --spacing-3: clamp(0.625rem, 2vw, 0.75rem);
@@ -59,65 +47,29 @@
             --spacing-8: clamp(1.5rem, 4vw, 2rem);
             --spacing-10: clamp(2rem, 5vw, 2.5rem);
             --spacing-12: clamp(2.5rem, 6vw, 3rem);
-            
-            /* Rounded Corners & Shadows */
             --border-radius-sm: 8px;
             --border-radius-md: 12px;
             --border-radius-lg: 18px;
             --border-radius-full: 9999px;
-            
             --box-shadow-subtle: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
             --box-shadow-header: 0 2px 12px rgba(0, 0, 0, 0.05);
             --box-shadow-floating: 0 12px 30px rgba(0, 0, 0, 0.15);
-            
             --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        /* Desktop Typography Expansion */
         @media (min-width: 640px) {
             :root {
-                --font-size-xs: 0.8125rem;  /* 13px */
-                --font-size-sm: 0.9375rem;  /* 15px */
-                --font-size-base: 1.0625rem;/* 17px */
-                --font-size-lg: 1.25rem;    /* 20px */
-                --font-size-xl: 1.4rem;     /* 22.4px */
-                --font-size-2xl: 1.75rem;   /* 28px */
-                --font-size-3xl: 2.25rem;   /* 36px */
+                --font-size-xs: 0.8125rem;
+                --font-size-sm: 0.9375rem;
+                --font-size-base: 1.0625rem;
+                --font-size-lg: 1.25rem;
+                --font-size-xl: 1.4rem;
+                --font-size-2xl: 1.75rem;
+                --font-size-3xl: 2.25rem;
             }
         }
-
-        /* Dark Mode Support */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --color-neutral-bg: #0b0f19;
-                --color-neutral-card: #161e2e;
-                --color-neutral-text-main: #f1f5f9;
-                --color-neutral-text-muted: #94a3b8;
-                --color-neutral-border: #26334d;
-                --color-primary-light: #2d1a42;
-                --color-warning-bg: #2d2006;
-                --color-warning-base: #fbbf24;
-                --color-success-bg: #062c16;
-                --color-success-base: #4ade80;
-            }
-        }
-
-        /* ==========================================================================
-           GLOBAL RESETS & AUTO-LINE WRAPPING RULES
-           ========================================================================== */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html, body {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
         body {
             font-family: var(--font-family-main);
             background-color: var(--color-neutral-bg);
@@ -130,957 +82,167 @@
             flex-direction: column;
             overflow-wrap: anywhere;
             word-break: break-word;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
         }
-
-        img, svg {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        a {
-            color: var(--color-primary-base);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-            word-break: break-all;
-        }
-
-        a:hover {
-            color: var(--color-primary-hover);
-            text-decoration: underline;
-        }
-
-        /* ==========================================================================
-           DYNAMIC HEADER & BRANDING
-           ========================================================================== */
+        html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+        img, svg { max-width: 100%; height: auto; display: block; }
+        a { color: var(--color-primary-base); text-decoration: none; transition: color var(--transition-fast); word-break: break-all; }
+        a:hover { color: var(--color-primary-hover); text-decoration: underline; }
         header {
             background-color: var(--color-neutral-card);
             border-bottom: 2px solid var(--color-primary-base);
             padding: var(--spacing-3) var(--spacing-4);
             position: sticky;
-            top: 0;
+            top: env(safe-area-inset-top, 0px);
             z-index: 100;
             box-shadow: var(--box-shadow-header);
             width: 100%;
-            left: 0;
-            right: 0;
+            left: 0; right: 0;
             box-sizing: border-box;
         }
-
-        .header-inner {
-            max-width: 860px;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--spacing-3);
-        }
-
-        .logo-group {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-3);
-            flex-wrap: wrap;
-        }
-
-        .logo-group img {
-            height: clamp(24px, 5vw, 36px);
-            width: auto;
-            object-fit: contain;
-        }
-
-        .header-title {
-            font-weight: 800;
-            font-size: var(--font-size-xs);
-            color: var(--color-primary-base);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            white-space: normal;
-            word-break: break-word;
-        }
-
-        /* ==========================================================================
-           MAIN CONTENT CONTAINER & CARDS
-           ========================================================================== */
-        .main-container {
-            width: 100%;
-            max-width: 860px;
-            margin: 0 auto;
-            padding: var(--spacing-5) var(--spacing-4) var(--spacing-12);
-            flex-grow: 1;
-            box-sizing: border-box;
-        }
-
-        .card {
-            background-color: var(--color-neutral-card);
-            border-radius: var(--border-radius-lg);
-            padding: var(--spacing-6);
-            box-shadow: var(--box-shadow-subtle);
-            margin-bottom: var(--spacing-6);
-            border: 1px solid var(--color-neutral-border);
-            width: 100%;
-            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-            box-sizing: border-box;
-        }
-
-        .hero-title {
-            font-size: var(--font-size-3xl);
-            font-weight: 800;
-            color: var(--color-primary-base);
-            margin-bottom: var(--spacing-2);
-            line-height: 1.25;
-            letter-spacing: -0.5px;
-            word-break: break-word;
-        }
-
-        .hero-desc {
-            font-size: var(--font-size-base);
-            color: var(--color-neutral-text-muted);
-            margin-bottom: var(--spacing-4);
-            line-height: 1.6;
-        }
-
-        /* ==========================================================================
-           DYNAMIC BANNERS & ALERTS
-           ========================================================================== */
-        .alert-banner {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--spacing-3);
-            background-color: var(--color-warning-bg);
-            border-left: 4px solid var(--color-warning-base);
-            padding: var(--spacing-3) var(--spacing-4);
-            border-radius: var(--border-radius-sm);
-            color: var(--color-warning-base);
-            font-size: var(--font-size-sm);
-            font-weight: 600;
-            margin-bottom: var(--spacing-5);
-            word-break: break-word;
-        }
-
-        .alert-icon {
-            flex-shrink: 0;
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-            margin-top: 2px;
-        }
-
-        .info-panel {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--spacing-3);
-            background-color: var(--color-primary-light);
-            padding: var(--spacing-3) var(--spacing-4);
-            border-radius: var(--border-radius-sm);
-            font-size: var(--font-size-sm);
-            color: var(--color-neutral-text-main);
-            margin: var(--spacing-4) 0;
-            word-break: break-word;
-        }
-
-        .info-icon {
-            flex-shrink: 0;
-            width: 20px;
-            height: 20px;
-            fill: var(--color-primary-base);
-            margin-top: 2px;
-        }
-
-        /* ==========================================================================
-           RESPONSIVE COUNTDOWN TIMER
-           ========================================================================== */
-        .countdown-wrapper {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--spacing-2);
-            background-color: var(--color-primary-light);
-            padding: var(--spacing-3);
-            border-radius: var(--border-radius-md);
-            text-align: center;
-            margin-bottom: var(--spacing-5);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        @media (max-width: 400px) {
-            .countdown-wrapper {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .countdown-segment {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: var(--spacing-2);
-            background-color: rgba(255, 255, 255, 0.4);
-            border-radius: var(--border-radius-sm);
-            min-width: 0;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .countdown-segment {
-                background-color: rgba(0, 0, 0, 0.2);
-            }
-        }
-
-        .countdown-number {
-            font-size: var(--font-size-2xl);
-            font-weight: 800;
-            color: var(--color-primary-base);
-            line-height: 1;
-            margin-bottom: var(--spacing-1);
-            font-variant-numeric: tabular-nums;
-        }
-
-        .countdown-label {
-            font-size: var(--font-size-xs);
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--color-primary-base);
-            letter-spacing: 0.5px;
-        }
-
-        /* ==========================================================================
-           PROGRESS TRACKING BAR
-           ========================================================================== */
-        .progress-container {
-            margin-top: var(--spacing-3);
-            width: 100%;
-        }
-
-        .progress-track {
-            background-color: var(--color-neutral-border);
-            height: 10px;
-            border-radius: var(--border-radius-full);
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--color-primary-base), #8b5cf6);
-            transition: width var(--transition-normal);
-        }
-
-        .progress-label {
-            font-size: var(--font-size-xs);
-            font-weight: 700;
-            color: var(--color-neutral-text-muted);
-            margin-top: var(--spacing-2);
-            text-align: right;
-            display: block;
-        }
-
-        /* ==========================================================================
-           BUTTONS & DYNAMIC WRAPPING INTERACTIVES
-           ========================================================================== */
-        .btn-primary, .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--spacing-2);
-            font-weight: 700;
-            font-size: var(--font-size-sm);
-            padding: var(--spacing-3) var(--spacing-5);
-            border-radius: var(--border-radius-md);
-            text-decoration: none;
-            border: 1px solid transparent;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            width: 100%;
-            text-align: center;
-            min-height: 44px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            white-space: normal;
-            word-break: break-word;
-        }
-
-        .btn-primary {
-            background-color: var(--color-primary-base);
-            color: #ffffff;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-primary-hover);
-            color: #ffffff;
-            text-decoration: none;
-            transform: translateY(-1px);
-        }
-
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-
-        .btn-secondary {
-            background-color: var(--color-primary-light);
-            color: var(--color-primary-base);
-            border-color: var(--color-primary-base);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--color-primary-hover);
-            color: #ffffff;
-            text-decoration: none;
-            transform: translateY(-1px);
-        }
-
-        .btn-icon {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-            flex-shrink: 0;
-        }
-
-        /* ==========================================================================
-           STEP CARDS & FLEXIBLE HEADER GROUPS
-           ========================================================================== */
-        .step-header-group {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--spacing-3);
-            margin-bottom: var(--spacing-4);
-            flex-wrap: nowrap;
-            width: 100%;
-        }
-
-        .step-number-badge {
-            width: clamp(32px, 8vw, 40px);
-            height: clamp(32px, 8vw, 40px);
-            border-radius: 50%;
-            background-color: var(--color-primary-base);
-            color: #ffffff;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--font-size-base);
-            flex-shrink: 0;
-            box-shadow: 0 2px 6px rgba(90, 44, 132, 0.25);
-            margin-top: 2px;
-        }
-
-        .step-title-text {
-            font-size: var(--font-size-xl);
-            font-weight: 800;
-            color: var(--color-neutral-text-main);
-            line-height: 1.3;
-            word-break: break-word;
-            min-width: 0;
-        }
-
-        .step-description {
-            font-size: var(--font-size-sm);
-            color: var(--color-neutral-text-muted);
-            margin-bottom: var(--spacing-4);
-            line-height: 1.6;
-        }
-
-        .step-subheading {
-            font-size: var(--font-size-lg);
-            font-weight: 700;
-            color: var(--color-neutral-text-main);
-            margin-top: var(--spacing-5);
-            margin-bottom: var(--spacing-3);
-            border-bottom: 1px solid var(--color-neutral-border);
-            padding-bottom: var(--spacing-2);
-            word-break: break-word;
-        }
-
-        /* ==========================================================================
-           RESPONSIVE LISTS & CHIPS
-           ========================================================================== */
-        .bullet-list {
-            padding-left: var(--spacing-5);
-            font-size: var(--font-size-sm);
-            color: var(--color-neutral-text-muted);
-            margin-bottom: var(--spacing-4);
-            list-style-type: disc;
-        }
-
-        .bullet-list li {
-            margin-bottom: var(--spacing-2);
-            line-height: 1.6;
-        }
-
-        .instruction-steps {
-            list-style: none;
-            counter-reset: custom-counter;
-            margin-bottom: var(--spacing-4);
-        }
-
-        .instruction-steps li {
-            position: relative;
-            padding-left: clamp(2rem, 6vw, 2.75rem);
-            margin-bottom: var(--spacing-3);
-            font-size: var(--font-size-sm);
-            color: var(--color-neutral-text-main);
-            line-height: 1.6;
-            word-break: break-word;
-        }
-
-        .instruction-steps li::before {
-            counter-increment: custom-counter;
-            content: counter(custom-counter);
-            position: absolute;
-            left: 0;
-            top: 2px;
-            width: clamp(22px, 5vw, 26px);
-            height: clamp(22px, 5vw, 26px);
-            background-color: var(--color-primary-light);
-            color: var(--color-primary-base);
-            font-weight: 700;
-            font-size: var(--font-size-xs);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--color-primary-base);
-        }
-
-        .quick-links-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-2);
-            margin-top: var(--spacing-3);
-        }
-
-        .quick-link-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-2);
-            background-color: var(--color-primary-light);
-            color: var(--color-primary-base);
-            font-weight: 700;
-            font-size: var(--font-size-xs);
-            padding: var(--spacing-2) var(--spacing-3);
-            border-radius: var(--border-radius-full);
-            text-decoration: none;
-            border: 1px solid var(--color-primary-base);
-            transition: all var(--transition-fast);
-            max-width: 100%;
-            white-space: normal;
-            word-break: break-word;
-        }
-
-        .quick-link-chip:hover {
-            background-color: var(--color-primary-base);
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .quick-link-chip svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-            flex-shrink: 0;
-        }
-
-        /* ==========================================================================
-           APP LINK CARDS (AUTO-FIT GRID)
-           ========================================================================== */
-        .app-link-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-            gap: var(--spacing-3);
-            width: 100%;
-        }
-
-        .app-link-card {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-3);
-            padding: var(--spacing-4);
-            background-color: var(--color-neutral-bg);
-            border-radius: var(--border-radius-md);
-            border: 1px solid var(--color-neutral-border);
-            text-decoration: none;
-            transition: all var(--transition-fast);
-            width: 100%;
-            min-width: 0;
-        }
-
-        .app-link-card:hover {
-            background-color: var(--color-primary-light);
-            border-color: var(--color-primary-base);
-            text-decoration: none;
-            transform: translateY(-2px);
-        }
-
-        .app-link-icon-wrap {
-            width: 44px;
-            height: 44px;
-            border-radius: var(--border-radius-md);
-            background-color: var(--color-primary-base);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .app-link-icon-wrap svg {
-            width: 22px;
-            height: 22px;
-            fill: #ffffff;
-        }
-
-        .app-link-text {
-            flex-grow: 1;
-            min-width: 0;
-        }
-
-        .app-link-title {
-            font-size: var(--font-size-sm);
-            font-weight: 700;
-            color: var(--color-neutral-text-main);
-            margin-bottom: 2px;
-            word-break: break-word;
-        }
-
-        .app-link-desc {
-            font-size: var(--font-size-xs);
-            color: var(--color-neutral-text-muted);
-            line-height: 1.4;
-            word-break: break-word;
-        }
-
-        .app-link-arrow {
-            width: 18px;
-            height: 18px;
-            fill: var(--color-neutral-text-muted);
-            flex-shrink: 0;
-        }
-
-        /* ==========================================================================
-           DYNAMIC DEVICE TABS (WRAP ACCORDING TO SCREEN)
-           ========================================================================== */
-        .device-tabs-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-2);
-            padding-bottom: var(--spacing-2);
-            margin-bottom: var(--spacing-4);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .device-tab-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--spacing-2);
-            padding: var(--spacing-2) var(--spacing-3);
-            border-radius: var(--border-radius-full);
-            border: 1px solid var(--color-neutral-border);
-            background-color: var(--color-neutral-card);
-            font-size: var(--font-size-sm);
-            font-weight: 600;
-            color: var(--color-neutral-text-muted);
-            cursor: pointer;
-            white-space: normal;
-            word-break: break-word;
-            transition: all var(--transition-fast);
-            flex: 1 1 calc(50% - var(--spacing-2));
-            min-width: 110px;
-            max-width: 100%;
-            min-height: 40px;
-            text-align: center;
-        }
-
+        .header-inner { max-width: 860px; width: 100%; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--spacing-3); }
+        .logo-group { display: flex; align-items: center; gap: var(--spacing-3); flex-wrap: wrap; }
+        .logo-group img { height: clamp(24px, 5vw, 36px); width: auto; object-fit: contain; }
+        .header-title { font-weight: 800; font-size: var(--font-size-xs); color: var(--color-primary-base); text-transform: uppercase; letter-spacing: 0.5px; white-space: normal; word-break: break-word; }
+        .main-container { width: 100%; max-width: 860px; margin: 0 auto; padding: var(--spacing-5) var(--spacing-4) var(--spacing-12); flex-grow: 1; box-sizing: border-box; }
+        .card { background-color: var(--color-neutral-card); border-radius: var(--border-radius-lg); padding: var(--spacing-6); box-shadow: var(--box-shadow-subtle); margin-bottom: var(--spacing-6); border: 1px solid var(--color-neutral-border); width: 100%; transition: transform var(--transition-fast), box-shadow var(--transition-fast); box-sizing: border-box; }
+        .hero-title { font-size: var(--font-size-3xl); font-weight: 800; color: var(--color-primary-base); margin-bottom: var(--spacing-2); line-height: 1.25; letter-spacing: -0.5px; word-break: break-word; }
+        .hero-desc { font-size: var(--font-size-base); color: var(--color-neutral-text-muted); margin-bottom: var(--spacing-4); line-height: 1.6; }
+        .alert-banner { display: flex; align-items: flex-start; gap: var(--spacing-3); background-color: var(--color-warning-bg); border-left: 4px solid var(--color-warning-base); padding: var(--spacing-3) var(--spacing-4); border-radius: var(--border-radius-sm); color: var(--color-warning-base); font-size: var(--font-size-sm); font-weight: 600; margin-bottom: var(--spacing-5); word-break: break-word; }
+        .alert-icon { flex-shrink: 0; width: 20px; height: 20px; fill: currentColor; margin-top: 2px; }
+        .info-panel { display: flex; align-items: flex-start; gap: var(--spacing-3); background-color: var(--color-primary-light); padding: var(--spacing-3) var(--spacing-4); border-radius: var(--border-radius-sm); font-size: var(--font-size-sm); color: var(--color-neutral-text-main); margin: var(--spacing-4) 0; word-break: break-word; }
+        .info-icon { flex-shrink: 0; width: 20px; height: 20px; fill: var(--color-primary-base); margin-top: 2px; }
+        .countdown-wrapper { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-2); background-color: var(--color-primary-light); padding: var(--spacing-3); border-radius: var(--border-radius-md); text-align: center; margin-bottom: var(--spacing-5); width: 100%; box-sizing: border-box; }
+        @media (max-width: 400px) { .countdown-wrapper { grid-template-columns: repeat(2, 1fr); } }
+        .countdown-segment { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: var(--spacing-2); background-color: rgba(255, 255, 255, 0.4); border-radius: var(--border-radius-sm); min-width: 0; }
+        .countdown-number { font-size: var(--font-size-2xl); font-weight: 800; color: var(--color-primary-base); line-height: 1; margin-bottom: var(--spacing-1); font-variant-numeric: tabular-nums; }
+        .countdown-label { font-size: var(--font-size-xs); font-weight: 700; text-transform: uppercase; color: var(--color-primary-base); letter-spacing: 0.5px; }
+        .progress-container { margin-top: var(--spacing-3); width: 100%; }
+        .progress-track { background-color: var(--color-neutral-border); height: 10px; border-radius: var(--border-radius-full); overflow: hidden; width: 100%; }
+        .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--color-primary-base), #8b5cf6); transition: width var(--transition-normal); }
+        .progress-label { font-size: var(--font-size-xs); font-weight: 700; color: var(--color-neutral-text-muted); margin-top: var(--spacing-2); text-align: right; display: block; }
+        .btn-primary, .btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-2); font-weight: 700; font-size: var(--font-size-sm); padding: var(--spacing-3) var(--spacing-5); border-radius: var(--border-radius-md); text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: all var(--transition-fast); width: 100%; text-align: center; min-height: 44px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); white-space: normal; word-break: break-word; }
+        .btn-primary { background-color: var(--color-primary-base); color: #ffffff; }
+        .btn-primary:hover { background-color: var(--color-primary-hover); color: #ffffff; text-decoration: none; transform: translateY(-1px); }
+        .btn-primary:active { transform: translateY(0); }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .btn-secondary { background-color: var(--color-primary-light); color: var(--color-primary-base); border-color: var(--color-primary-base); }
+        .btn-secondary:hover { background-color: var(--color-primary-hover); color: #ffffff; text-decoration: none; transform: translateY(-1px); }
+        .btn-icon { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+        .step-header-group { display: flex; align-items: flex-start; gap: var(--spacing-3); margin-bottom: var(--spacing-4); flex-wrap: nowrap; width: 100%; }
+        .step-number-badge { width: clamp(32px, 8vw, 40px); height: clamp(32px, 8vw, 40px); border-radius: 50%; background-color: var(--color-primary-base); color: #ffffff; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: var(--font-size-base); flex-shrink: 0; box-shadow: 0 2px 6px rgba(90, 44, 132, 0.25); margin-top: 2px; }
+        .step-title-text { font-size: var(--font-size-xl); font-weight: 800; color: var(--color-neutral-text-main); line-height: 1.3; word-break: break-word; min-width: 0; }
+        .step-description { font-size: var(--font-size-sm); color: var(--color-neutral-text-muted); margin-bottom: var(--spacing-4); line-height: 1.6; }
+        .step-subheading { font-size: var(--font-size-lg); font-weight: 700; color: var(--color-neutral-text-main); margin-top: var(--spacing-5); margin-bottom: var(--spacing-3); border-bottom: 1px solid var(--color-neutral-border); padding-bottom: var(--spacing-2); word-break: break-word; }
+        .bullet-list { padding-left: var(--spacing-5); font-size: var(--font-size-sm); color: var(--color-neutral-text-muted); margin-bottom: var(--spacing-4); list-style-type: disc; }
+        .bullet-list li { margin-bottom: var(--spacing-2); line-height: 1.6; }
+        .instruction-steps { list-style: none; counter-reset: custom-counter; margin-bottom: var(--spacing-4); }
+        .instruction-steps li { position: relative; padding-left: clamp(2rem, 6vw, 2.75rem); margin-bottom: var(--spacing-3); font-size: var(--font-size-sm); color: var(--color-neutral-text-main); line-height: 1.6; word-break: break-word; }
+        .instruction-steps li::before { counter-increment: custom-counter; content: counter(custom-counter); position: absolute; left: 0; top: 2px; width: clamp(22px, 5vw, 26px); height: clamp(22px, 5vw, 26px); background-color: var(--color-primary-light); color: var(--color-primary-base); font-weight: 700; font-size: var(--font-size-xs); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-primary-base); }
+        .quick-links-wrapper { display: flex; flex-wrap: wrap; gap: var(--spacing-2); margin-top: var(--spacing-3); }
+        .quick-link-chip { display: inline-flex; align-items: center; gap: var(--spacing-2); background-color: var(--color-primary-light); color: var(--color-primary-base); font-weight: 700; font-size: var(--font-size-xs); padding: var(--spacing-2) var(--spacing-3); border-radius: var(--border-radius-full); text-decoration: none; border: 1px solid var(--color-primary-base); transition: all var(--transition-fast); max-width: 100%; white-space: normal; word-break: break-word; cursor: pointer; }
+        .quick-link-chip:hover { background-color: var(--color-primary-base); color: #ffffff; text-decoration: none; }
+        .quick-link-chip svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+        .app-link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: var(--spacing-3); width: 100%; }
+        .app-link-card { display: flex; align-items: center; gap: var(--spacing-3); padding: var(--spacing-4); background-color: var(--color-neutral-bg); border-radius: var(--border-radius-md); border: 1px solid var(--color-neutral-border); text-decoration: none; transition: all var(--transition-fast); width: 100%; min-width: 0; }
+        .app-link-card:hover { background-color: var(--color-primary-light); border-color: var(--color-primary-base); text-decoration: none; transform: translateY(-2px); }
+        .app-link-icon-wrap { width: 44px; height: 44px; border-radius: var(--border-radius-md); background-color: var(--color-primary-base); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .app-link-icon-wrap svg { width: 22px; height: 22px; fill: #ffffff; }
+        .app-link-text { flex-grow: 1; min-width: 0; }
+        .app-link-title { font-size: var(--font-size-sm); font-weight: 700; color: var(--color-neutral-text-main); margin-bottom: 2px; word-break: break-word; }
+        .app-link-desc { font-size: var(--font-size-xs); color: var(--color-neutral-text-muted); line-height: 1.4; word-break: break-word; }
+        .app-link-arrow { width: 18px; height: 18px; fill: var(--color-neutral-text-muted); flex-shrink: 0; }
+        .device-tabs-container { display: flex; flex-wrap: wrap; gap: var(--spacing-2); padding-bottom: var(--spacing-2); margin-bottom: var(--spacing-4); width: 100%; box-sizing: border-box; }
+        .device-tab-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-2); padding: var(--spacing-2) var(--spacing-3); border-radius: var(--border-radius-full); border: 1px solid var(--color-neutral-border); background-color: var(--color-neutral-card); font-size: var(--font-size-sm); font-weight: 600; color: var(--color-neutral-text-muted); cursor: pointer; white-space: normal; word-break: break-word; transition: all var(--transition-fast); flex: 1 1 calc(50% - var(--spacing-2)); min-width: 110px; max-width: 100%; min-height: 40px; text-align: center; }
+        @media (min-width: 640px) { .device-tab-btn { flex: 1 1 auto; } }
+        .device-tab-btn:hover { background-color: var(--color-neutral-bg); color: var(--color-neutral-text-main); }
+        .device-tab-btn.is-active { background-color: var(--color-primary-base); color: #ffffff; border-color: var(--color-primary-base); box-shadow: 0 2px 6px rgba(90, 44, 132, 0.3); }
+        .device-tab-icon { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+        .device-content-area { animation: fadeIn 0.3s ease-in-out; width: 100%; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+        .code-container { background-color: var(--color-neutral-code-bg); border-radius: var(--border-radius-md); margin: var(--spacing-4) 0; overflow: hidden; border: 1px solid var(--color-neutral-border); width: 100%; box-sizing: border-box; }
+        .code-header { display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-2) var(--spacing-4); background-color: rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.1); flex-wrap: wrap; gap: var(--spacing-2); }
+        .code-header-title { color: #94a3b8; font-size: var(--font-size-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .code-snippet-box { color: var(--color-neutral-code-text); padding: var(--spacing-4); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: var(--font-size-sm); line-height: 1.8; white-space: pre-wrap; word-break: break-all; overflow-wrap: anywhere; box-sizing: border-box; width: 100%; }
+        .copy-action-btn { background-color: var(--color-primary-base); color: #ffffff; border: none; padding: var(--spacing-1) var(--spacing-3); border-radius: var(--border-radius-sm); font-size: var(--font-size-xs); font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: var(--spacing-1); transition: background-color var(--transition-fast); min-height: 32px; }
+        .copy-action-btn:hover { background-color: var(--color-primary-hover); }
+        .copy-icon { width: 14px; height: 14px; fill: currentColor; }
+        .task-list { display: flex; flex-direction: column; gap: var(--spacing-2); width: 100%; }
+        .task-item { display: flex; align-items: flex-start; gap: var(--spacing-3); padding: var(--spacing-3) var(--spacing-4); background-color: var(--color-neutral-bg); border-radius: var(--border-radius-md); cursor: pointer; user-select: none; transition: all var(--transition-fast); border: 1px solid var(--color-neutral-border); width: 100%; min-width: 0; box-sizing: border-box; }
+        .task-item:hover { background-color: var(--color-primary-light); border-color: var(--color-primary-base); }
+        .task-item.is-completed { background-color: var(--color-success-bg); border-color: var(--color-success-base); }
+        .task-checkbox { width: 22px; height: 22px; border: 2px solid var(--color-primary-base); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-top: 2px; flex-shrink: 0; background-color: var(--color-neutral-card); transition: all var(--transition-fast); }
+        .task-item.is-completed .task-checkbox { background-color: var(--color-success-base); border-color: var(--color-success-base); }
+        .check-icon { width: 14px; height: 14px; fill: #ffffff; opacity: 0; transform: scale(0.5); transition: all var(--transition-fast); }
+        .task-item.is-completed .check-icon { opacity: 1; transform: scale(1); }
+        .task-label { font-size: var(--font-size-sm); color: var(--color-neutral-text-main); font-weight: 500; line-height: 1.5; word-break: break-word; flex-grow: 1; min-width: 0; }
+        .task-item.is-completed .task-label { text-decoration: line-through; color: var(--color-neutral-text-muted); }
+        .accordion-group { border-top: 1px solid var(--color-neutral-border); margin-top: var(--spacing-4); width: 100%; }
+        .accordion-item { border-bottom: 1px solid var(--color-neutral-border); width: 100%; }
+        .accordion-trigger { width: 100%; display: flex; justify-content: space-between; align-items: flex-start; gap: var(--spacing-3); padding: var(--spacing-4) 0; background: none; border: none; font-weight: 700; font-size: var(--font-size-sm); color: var(--color-neutral-text-main); cursor: pointer; text-align: left; font-family: inherit; line-height: 1.4; word-break: break-word; }
+        .accordion-trigger:hover { color: var(--color-primary-base); }
+        .accordion-icon { width: 20px; height: 20px; fill: var(--color-neutral-text-muted); transition: transform var(--transition-normal); flex-shrink: 0; margin-top: 2px; }
+        .accordion-item.is-open .accordion-icon { transform: rotate(180deg); fill: var(--color-primary-base); }
+        .accordion-item.is-open .accordion-trigger { color: var(--color-primary-base); }
+        .accordion-content { font-size: var(--font-size-sm); color: var(--color-neutral-text-muted); line-height: 1.6; max-height: 0; overflow: hidden; transition: max-height var(--transition-normal) ease-in-out, padding var(--transition-normal) ease-in-out; word-break: break-word; }
+        .accordion-item.is-open .accordion-content { max-height: 2000px; padding-bottom: var(--spacing-4); }
+        .toast-container { position: fixed; bottom: calc(var(--spacing-6) + env(safe-area-inset-bottom, 0px)); left: 50%; transform: translateX(-50%) translateY(100px); background-color: var(--color-neutral-text-main); color: var(--color-neutral-card); padding: var(--spacing-3) var(--spacing-5); border-radius: var(--border-radius-full); font-size: var(--font-size-sm); font-weight: 600; box-shadow: var(--box-shadow-floating); opacity: 0; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease; z-index: 1000; display: flex; align-items: center; gap: var(--spacing-2); width: min(90%, 420px); text-align: center; justify-content: center; word-break: break-word; }
+        .toast-container.is-visible { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .site-footer { text-align: center; font-size: var(--font-size-xs); color: var(--color-neutral-text-muted); padding: var(--spacing-6) var(--spacing-4); border-top: 1px solid var(--color-neutral-border); margin-top: auto; background-color: var(--color-neutral-card); width: 100%; box-sizing: border-box; }
+        .footer-inner { max-width: 860px; margin: 0 auto; width: 100%; }
+        /* --- Section form cards --- */
+        .section-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: var(--spacing-4); width: 100%; }
+        .section-form-card { background-color: var(--color-neutral-bg); border: 1px solid var(--color-neutral-border); border-radius: var(--border-radius-md); padding: var(--spacing-4); display: flex; flex-direction: column; gap: var(--spacing-2); }
+        .section-form-name { font-size: var(--font-size-lg); font-weight: 800; color: var(--color-primary-base); }
+        .section-form-meta { font-size: var(--font-size-xs); color: var(--color-neutral-text-muted); line-height: 1.5; }
+        .section-form-cost { font-size: var(--font-size-2xl); font-weight: 800; color: var(--color-neutral-text-main); margin: var(--spacing-1) 0; }
+        .section-form-needs { font-size: var(--font-size-xs); color: var(--color-neutral-text-muted); padding-left: var(--spacing-4); list-style: disc; margin-bottom: var(--spacing-2); }
+        .section-form-needs li { margin-bottom: var(--spacing-1); }
+        .section-form-email-note { font-size: var(--font-size-xs); color: var(--color-neutral-text-muted); font-style: italic; }
+        .form-action-row { display: flex; flex-wrap: wrap; gap: var(--spacing-2); margin-top: var(--spacing-1); }
+        .form-action-row .btn-secondary { width: auto; flex: 1 1 auto; padding: var(--spacing-2) var(--spacing-3); font-size: var(--font-size-xs); min-height: 38px; }
+        .icon-only-btn { display: inline-flex; align-items: center; justify-content: center; width: 38px; min-height: 38px; padding: 0; flex: 0 0 38px; }
+        .icon-only-btn svg { width: 16px; height: 16px; }
+        .unofficial-notice { background-color: var(--color-neutral-bg); border: 1px dashed var(--color-neutral-border); border-radius: var(--border-radius-md); padding: var(--spacing-4); font-size: var(--font-size-xs); color: var(--color-neutral-text-muted); margin-top: var(--spacing-5); line-height: 1.6; }
+        /* --- Terms & conditions --- */
+        .terms-section { scroll-margin-top: var(--spacing-6); }
+        .terms-block { margin-bottom: var(--spacing-5); }
+        .terms-block h3 { font-size: var(--font-size-base); font-weight: 800; color: var(--color-primary-base); margin-bottom: var(--spacing-2); }
+        .terms-block p, .terms-block li { font-size: var(--font-size-sm); color: var(--color-neutral-text-muted); line-height: 1.65; }
+        .terms-block ul { padding-left: var(--spacing-5); margin-top: var(--spacing-2); list-style: disc; }
+        .terms-block li { margin-bottom: var(--spacing-2); }
+        .terms-toc { display: flex; flex-wrap: wrap; gap: var(--spacing-2); margin-bottom: var(--spacing-5); }
         @media (min-width: 640px) {
-            .device-tab-btn {
-                flex: 1 1 auto;
-            }
+            .btn-primary, .btn-secondary { width: auto; }
+            .header-title { font-size: var(--font-size-sm); }
         }
-
-        .device-tab-btn:hover {
-            background-color: var(--color-neutral-bg);
-            color: var(--color-neutral-text-main);
-        }
-
-        .device-tab-btn.is-active {
-            background-color: var(--color-primary-base);
-            color: #ffffff;
-            border-color: var(--color-primary-base);
-            box-shadow: 0 2px 6px rgba(90, 44, 132, 0.3);
-        }
-
-        .device-tab-icon {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-            flex-shrink: 0;
-        }
-
-        .device-content-area {
-            animation: fadeIn 0.3s ease-in-out;
-            width: 100%;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ==========================================================================
-           CODE & DOMAIN WHITELIST BOX (RESPONSIVE TEXT WRAPPING)
-           ========================================================================== */
-        .code-container {
-            background-color: var(--color-neutral-code-bg);
-            border-radius: var(--border-radius-md);
-            margin: var(--spacing-4) 0;
-            overflow: hidden;
-            border: 1px solid var(--color-neutral-border);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .code-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: var(--spacing-2) var(--spacing-4);
-            background-color: rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            flex-wrap: wrap;
-            gap: var(--spacing-2);
-        }
-
-        .code-header-title {
-            color: #94a3b8;
-            font-size: var(--font-size-xs);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .code-snippet-box {
-            color: var(--color-neutral-code-text);
-            padding: var(--spacing-4);
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            font-size: var(--font-size-sm);
-            line-height: 1.8;
-            white-space: pre-wrap;
-            word-break: break-all;
-            overflow-wrap: anywhere;
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        .copy-action-btn {
-            background-color: var(--color-primary-base);
-            color: #ffffff;
-            border: none;
-            padding: var(--spacing-1) var(--spacing-3);
-            border-radius: var(--border-radius-sm);
-            font-size: var(--font-size-xs);
-            font-weight: 700;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-1);
-            transition: background-color var(--transition-fast);
-            min-height: 32px;
-        }
-
-        .copy-action-btn:hover {
-            background-color: var(--color-primary-hover);
-        }
-
-        .copy-icon {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
-
-        /* ==========================================================================
-           INTERACTIVE CHECKLIST (MULTILINE WRAPPING)
-           ========================================================================== */
-        .task-list {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-2);
-            width: 100%;
-        }
-
-        .task-item {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--spacing-3);
-            padding: var(--spacing-3) var(--spacing-4);
-            background-color: var(--color-neutral-bg);
-            border-radius: var(--border-radius-md);
-            cursor: pointer;
-            user-select: none;
-            transition: all var(--transition-fast);
-            border: 1px solid var(--color-neutral-border);
-            width: 100%;
-            min-width: 0;
-            box-sizing: border-box;
-        }
-
-        .task-item:hover {
-            background-color: var(--color-primary-light);
-            border-color: var(--color-primary-base);
-        }
-
-        .task-item.is-completed {
-            background-color: var(--color-success-bg);
-            border-color: var(--color-success-base);
-        }
-
-        .task-checkbox {
-            width: 22px;
-            height: 22px;
-            border: 2px solid var(--color-primary-base);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 2px;
-            flex-shrink: 0;
-            background-color: var(--color-neutral-card);
-            transition: all var(--transition-fast);
-        }
-
-        .task-item.is-completed .task-checkbox {
-            background-color: var(--color-success-base);
-            border-color: var(--color-success-base);
-        }
-
-        .check-icon {
-            width: 14px;
-            height: 14px;
-            fill: #ffffff;
-            opacity: 0;
-            transform: scale(0.5);
-            transition: all var(--transition-fast);
-        }
-
-        .task-item.is-completed .check-icon {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .task-label {
-            font-size: var(--font-size-sm);
-            color: var(--color-neutral-text-main);
-            font-weight: 500;
-            line-height: 1.5;
-            word-break: break-word;
-            flex-grow: 1;
-            min-width: 0;
-        }
-
-        .task-item.is-completed .task-label {
-            text-decoration: line-through;
-            color: var(--color-neutral-text-muted);
-        }
-
-        /* ==========================================================================
-           ACCORDION & FAQ (RESPONSIVE TRIGGER HEADERS)
-           ========================================================================== */
-        .accordion-group {
-            border-top: 1px solid var(--color-neutral-border);
-            margin-top: var(--spacing-4);
-            width: 100%;
-        }
-
-        .accordion-item {
-            border-bottom: 1px solid var(--color-neutral-border);
-            width: 100%;
-        }
-
-        .accordion-trigger {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: var(--spacing-3);
-            padding: var(--spacing-4) 0;
-            background: none;
-            border: none;
-            font-weight: 700;
-            font-size: var(--font-size-sm);
-            color: var(--color-neutral-text-main);
-            cursor: pointer;
-            text-align: left;
-            font-family: inherit;
-            line-height: 1.4;
-            word-break: break-word;
-        }
-
-        .accordion-trigger:hover {
-            color: var(--color-primary-base);
-        }
-
-        .accordion-icon {
-            width: 20px;
-            height: 20px;
-            fill: var(--color-neutral-text-muted);
-            transition: transform var(--transition-normal);
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .accordion-item.is-open .accordion-icon {
-            transform: rotate(180deg);
-            fill: var(--color-primary-base);
-        }
-
-        .accordion-item.is-open .accordion-trigger {
-            color: var(--color-primary-base);
-        }
-
-        .accordion-content {
-            font-size: var(--font-size-sm);
-            color: var(--color-neutral-text-muted);
-            line-height: 1.6;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height var(--transition-normal) ease-in-out, padding var(--transition-normal) ease-in-out;
-            word-break: break-word;
-        }
-
-        .accordion-item.is-open .accordion-content {
-            max-height: 600px;
-            padding-bottom: var(--spacing-4);
-        }
-
-        /* ==========================================================================
-           TOAST NOTIFICATION (AUTO-FITTING SCREEN WIDTH)
-           ========================================================================== */
-        .toast-container {
-            position: fixed;
-            bottom: var(--spacing-6);
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background-color: var(--color-neutral-text-main);
-            color: var(--color-neutral-card);
-            padding: var(--spacing-3) var(--spacing-5);
-            border-radius: var(--border-radius-full);
-            font-size: var(--font-size-sm);
-            font-weight: 600;
-            box-shadow: var(--box-shadow-floating);
-            opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-2);
-            width: min(90%, 420px);
-            text-align: center;
-            justify-content: center;
-            word-break: break-word;
-        }
-
-        .toast-container.is-visible {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        /* ==========================================================================
-           FOOTER
-           ========================================================================== */
-        .site-footer {
-            text-align: center;
-            font-size: var(--font-size-xs);
-            color: var(--color-neutral-text-muted);
-            padding: var(--spacing-6) var(--spacing-4);
-            border-top: 1px solid var(--color-neutral-border);
-            margin-top: auto;
-            background-color: var(--color-neutral-card);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .footer-inner {
-            max-width: 860px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        /* Responsive Media Query Extensions */
-        @media (min-width: 640px) {
-            .btn-primary, .btn-secondary {
-                width: auto;
-            }
-
-            .header-title {
-                font-size: var(--font-size-sm);
-            }
-        }
-
-        /* Reduced motion accessibility */
         @media (prefers-reduced-motion: reduce) {
-            *, ::before, ::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
+            *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
     </style>
 </head>
 <body>
-
-    <!-- ======================================================================
-         SVG ICON SYMBOLS
-         ====================================================================== -->
     <svg style="display: none;">
-        <symbol id="icon-external" viewBox="0 0 24 24">
-            <path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
-        </symbol>
-        <symbol id="icon-warning" viewBox="0 0 24 24">
-            <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
-        </symbol>
-        <symbol id="icon-info" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-        </symbol>
-        <symbol id="icon-copy" viewBox="0 0 24 24">
-            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-        </symbol>
-        <symbol id="icon-check" viewBox="0 0 24 24">
-            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-        </symbol>
-        <symbol id="icon-chevron" viewBox="0 0 24 24">
-            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
-        </symbol>
-        <symbol id="icon-chat" viewBox="0 0 24 24">
-            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
-        </symbol>
-        <symbol id="icon-dashboard" viewBox="0 0 24 24">
-            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
-        </symbol>
-        <symbol id="icon-globe" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7 6h-3.2c-.32-1.25-.78-2.45-1.4-3.55A8.03 8.03 0 0 1 19 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h3.2c.32 1.25.78 2.45 1.4 3.55A7.99 7.99 0 0 1 5.08 16zm3.2-8H5.08a7.99 7.99 0 0 1 4.6-3.55A15.8 15.8 0 0 0 8.28 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.55c.62-1.1 1.08-2.3 1.4-3.55h3.2a8.03 8.03 0 0 1-4.6 3.55zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>
-        </symbol>
-        <symbol id="icon-cube" viewBox="0 0 24 24">
-            <path d="M12 2 2 7v10l10 5 10-5V7L12 2zm0 2.3L18.8 7 12 9.7 5.2 7 12 4.3zM4 9.2l7 3.1v7.4l-7-3.5V9.2zm9 10.5v-7.4l7-3.1v6.9l-7 3.6z"/>
-        </symbol>
-        <symbol id="icon-mobile" viewBox="0 0 24 24">
-            <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
-        </symbol>
-        <symbol id="icon-android" viewBox="0 0 24 24">
-            <path d="M17.6 11.48L19.44 8.3a.63.63 0 0 0-.22-.86.63.63 0 0 0-.86.22l-1.9 3.28c-1.34-.6-2.86-.94-4.46-.94s-3.12.34-4.46.94l-1.9-3.28a.63.63 0 0 0-.86-.22.63.63 0 0 0-.22.86l1.84 3.18C3.52 13 1.5 15.82 1.5 19.14h21c0-3.32-2.02-6.14-4.9-7.66zM7.17 16.74c-.65 0-1.18-.53-1.18-1.18s.53-1.18 1.18-1.18 1.18.53 1.18 1.18-.53 1.18-1.18 1.18zm9.66 0c-.65 0-1.18-.53-1.18-1.18s.53-1.18 1.18-1.18 1.18.53 1.18 1.18-.53 1.18-1.18 1.18z"/>
-        </symbol>
-        <symbol id="icon-windows" viewBox="0 0 24 24">
-            <path d="M3 5.51L10.5 4.4v7.2H3V5.51zM11.5 4.26L21 2.9v8.7h-9.5V4.26zM21 12.6v8.5l-9.5-1.36v-7.14H21zM10.5 12.6v6.99L3 18.49v-5.89h7.5z"/>
-        </symbol>
-        <symbol id="icon-mac" viewBox="0 0 24 24">
-            <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>
-        </symbol>
-        <symbol id="icon-chromebook" viewBox="0 0 24 24">
-            <path d="M22 18V3H2v15H0v2h24v-2h-2zm-8 0h-4v-1h4v1zm6-3H4V5h16v10z"/>
-        </symbol>
+        <symbol id="icon-external" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></symbol>
+        <symbol id="icon-warning" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
+        <symbol id="icon-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></symbol>
+        <symbol id="icon-copy" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
+        <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></symbol>
+        <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/></symbol>
+        <symbol id="icon-dashboard" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></symbol>
+        <symbol id="icon-globe" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm7 6h-3.2c-.32-1.25-.78-2.45-1.4-3.55A8.03 8.03 0 0 1 19 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h3.2c.32 1.25.78 2.45 1.4 3.55A7.99 7.99 0 0 1 5.08 16zm3.2-8H5.08a7.99 7.99 0 0 1 4.6-3.55A15.8 15.8 0 0 0 8.28 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.55c.62-1.1 1.08-2.3 1.4-3.55h3.2a8.03 8.03 0 0 1-4.6 3.55zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></symbol>
+        <symbol id="icon-cube" viewBox="0 0 24 24"><path d="M12 2 2 7v10l10 5 10-5V7L12 2zm0 2.3L18.8 7 12 9.7 5.2 7 12 4.3zM4 9.2l7 3.1v7.4l-7-3.5V9.2zm9 10.5v-7.4l7-3.1v6.9l-7 3.6z"/></symbol>
+        <symbol id="icon-mobile" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></symbol>
+        <symbol id="icon-android" viewBox="0 0 24 24"><path d="M17.6 11.48L19.44 8.3a.63.63 0 0 0-.22-.86.63.63 0 0 0-.86.22l-1.9 3.28c-1.34-.6-2.86-.94-4.46-.94s-3.12.34-4.46.94l-1.9-3.28a.63.63 0 0 0-.86-.22.63.63 0 0 0-.22.86l1.84 3.18C3.52 13 1.5 15.82 1.5 19.14h21c0-3.32-2.02-6.14-4.9-7.66zM7.17 16.74c-.65 0-1.18-.53-1.18-1.18s.53-1.18 1.18-1.18 1.18.53 1.18 1.18-.53 1.18-1.18 1.18zm9.66 0c-.65 0-1.18-.53-1.18-1.18s.53-1.18 1.18-1.18 1.18.53 1.18 1.18-.53 1.18-1.18 1.18z"/></symbol>
+        <symbol id="icon-windows" viewBox="0 0 24 24"><path d="M3 5.51L10.5 4.4v7.2H3V5.51zM11.5 4.26L21 2.9v8.7h-9.5V4.26zM21 12.6v8.5l-9.5-1.36v-7.14H21zM10.5 12.6v6.99L3 18.49v-5.89h7.5z"/></symbol>
+        <symbol id="icon-mac" viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></symbol>
+        <symbol id="icon-chromebook" viewBox="0 0 24 24"><path d="M22 18V3H2v15H0v2h24v-2h-2zm-8 0h-4v-1h4v1zm6-3H4V5h16v10z"/></symbol>
+        <symbol id="icon-doc" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></symbol>
+        <symbol id="icon-scroll" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v3h2V5h14v14h-9v2h9a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM11 7H3v2h8V7zm0 4H3v2h8v-2zm-2 4H3v2h6v-2z"/></symbol>
     </svg>
 
-    <!-- ======================================================================
-         HEADER SECTION
-         ====================================================================== -->
     <header>
         <div class="header-inner">
             <div class="logo-group">
@@ -1091,133 +253,72 @@
         </div>
     </header>
 
-    <!-- ======================================================================
-         MAIN CONTENT AREA
-         ====================================================================== -->
     <main class="main-container">
 
-        <!-- Hero & Countdown Card -->
         <section class="card">
             <h1 class="hero-title">JOTA-JOTI 2026 Setup</h1>
             <p class="hero-desc">Follow these simple steps to properly configure your devices and prepare your Scout for the worldwide online event taking place 16&ndash;18 October 2026.</p>
             
             <div class="alert-banner">
                 <svg class="alert-icon"><use href="#icon-warning"></use></svg>
-                <span>Expressions of Interest close Friday 9 October 2026. Submit early to ensure your Scout receives their unique login credentials in time.</span>
+                <span>Sign-ups close Friday 9 October 2026. Submit early to ensure your Scout receives their unique login credentials in time.</span>
             </div>
 
-            <!-- Dynamic countdown grid auto-reflows to 2x2 or 4-col depending on phone screen width -->
             <div class="countdown-wrapper" aria-label="Countdown to JOTA-JOTI event">
-                <div class="countdown-segment">
-                    <span class="countdown-number" id="countdown-days">00</span>
-                    <span class="countdown-label">Days</span>
-                </div>
-                <div class="countdown-segment">
-                    <span class="countdown-number" id="countdown-hours">00</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-segment">
-                    <span class="countdown-number" id="countdown-minutes">00</span>
-                    <span class="countdown-label">Mins</span>
-                </div>
-                <div class="countdown-segment">
-                    <span class="countdown-number" id="countdown-seconds">00</span>
-                    <span class="countdown-label">Secs</span>
-                </div>
+                <div class="countdown-segment"><span class="countdown-number" id="countdown-days">00</span><span class="countdown-label">Days</span></div>
+                <div class="countdown-segment"><span class="countdown-number" id="countdown-hours">00</span><span class="countdown-label">Hours</span></div>
+                <div class="countdown-segment"><span class="countdown-number" id="countdown-minutes">00</span><span class="countdown-label">Mins</span></div>
+                <div class="countdown-segment"><span class="countdown-number" id="countdown-seconds">00</span><span class="countdown-label">Secs</span></div>
             </div>
 
             <div class="progress-container">
-                <div class="progress-track">
-                    <div class="progress-fill" id="progress-bar-fill"></div>
-                </div>
+                <div class="progress-track"><div class="progress-fill" id="progress-bar-fill"></div></div>
                 <span class="progress-label" id="progress-bar-text">0 of 5 steps completed</span>
+            </div>
+
+            <div class="quick-links-wrapper">
+                <a class="quick-link-chip" href="#section-forms"><svg><use href="#icon-doc"></use></svg>Jump to Forms</a>
+                <a class="quick-link-chip" href="#terms-conditions"><svg><use href="#icon-scroll"></use></svg>Jump to Terms & Conditions</a>
             </div>
         </section>
 
-        <!-- STEP 1: Form Submission -->
         <section class="card">
-            <header class="step-header-group">
-                <div class="step-number-badge">1</div>
-                <h2 class="step-title-text">Submit Sign-Up Form</h2>
-            </header>
-            <p class="step-description">Fill out the official Expression of Interest form. If you have more than one Scout participating, you must submit a separate form for each child to ensure they receive unique credentials.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSevs4K7aNGjPOSBk9tjFZtShpqkRQUAOjVetaInhpaaOARFrA/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn-primary">
-                <span>Open Registration Form</span>
-                <svg class="btn-icon"><use href="#icon-external"></use></svg>
+            <header class="step-header-group"><div class="step-number-badge">1</div><h2 class="step-title-text">Submit Sign-Up Form</h2></header>
+            <p class="step-description">Fill out the official sign-up form. If you have more than one Scout participating, you must submit a separate form for each child to ensure they receive unique credentials.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeBhtFuVNzjqtAFOeluNfiA1hFPr1JXXfSx9xZcnivSV1fiUw/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                <span>Open Registration Form</span><svg class="btn-icon"><use href="#icon-external"></use></svg>
             </a>
         </section>
 
-        <!-- STEP 2: Account Details -->
         <section class="card">
-            <header class="step-header-group">
-                <div class="step-number-badge">2</div>
-                <h2 class="step-title-text">Secure Account Details</h2>
-            </header>
+            <header class="step-header-group"><div class="step-number-badge">2</div><h2 class="step-title-text">Secure Account Details</h2></header>
             <p class="step-description">Once your registration is verified by Scout Leaders, you will receive an automated email containing the following critical information:</p>
             <ul class="bullet-list">
                 <li><strong>4-Digit PIN:</strong> The unique password your Scout will use to access the dashboard and secure chat rooms.</li>
                 <li><strong>Participant ID:</strong> An alphanumeric code used by leaders to identify your Scout if technical support is required during the weekend.</li>
             </ul>
-            <div class="info-panel">
-                <svg class="info-icon"><use href="#icon-info"></use></svg>
-                <span>Please store this email securely. We highly recommend checking your junk or spam folder if the confirmation has not arrived within three business days.</span>
-            </div>
+            <div class="info-panel"><svg class="info-icon"><use href="#icon-info"></use></svg><span>Please store this email securely. We highly recommend checking your junk or spam folder if the confirmation has not arrived within three business days.</span></div>
         </section>
 
-        <!-- STEP 3: Device Configuration -->
         <section class="card">
-            <header class="step-header-group">
-                <div class="step-number-badge">3</div>
-                <h2 class="step-title-text">Configure Device & Screen Time</h2>
-            </header>
+            <header class="step-header-group"><div class="step-number-badge">3</div><h2 class="step-title-text">Configure Device & Screen Time</h2></header>
             <p class="step-description">Select the primary hardware your Scout will utilize during the event. This will reveal specific instructions for installing the web-app and adjusting parental screen-time limitations, plus a direct link to open it.</p>
-            
             <nav class="device-tabs-container" aria-label="Device selection">
-                <button class="device-tab-btn is-active" data-device="ios" aria-pressed="true">
-                    <svg class="device-tab-icon"><use href="#icon-mobile"></use></svg>
-                    <span>iPhone / iPad</span>
-                </button>
-                <button class="device-tab-btn" data-device="android" aria-pressed="false">
-                    <svg class="device-tab-icon"><use href="#icon-android"></use></svg>
-                    <span>Android</span>
-                </button>
-                <button class="device-tab-btn" data-device="windows" aria-pressed="false">
-                    <svg class="device-tab-icon"><use href="#icon-windows"></use></svg>
-                    <span>Windows PC</span>
-                </button>
-                <button class="device-tab-btn" data-device="mac" aria-pressed="false">
-                    <svg class="device-tab-icon"><use href="#icon-mac"></use></svg>
-                    <span>Mac</span>
-                </button>
-                <button class="device-tab-btn" data-device="chromebook" aria-pressed="false">
-                    <svg class="device-tab-icon"><use href="#icon-chromebook"></use></svg>
-                    <span>Chromebook</span>
-                </button>
+                <button class="device-tab-btn is-active" data-device="ios" aria-pressed="true"><svg class="device-tab-icon"><use href="#icon-mobile"></use></svg><span>iPhone / iPad</span></button>
+                <button class="device-tab-btn" data-device="android" aria-pressed="false"><svg class="device-tab-icon"><use href="#icon-android"></use></svg><span>Android</span></button>
+                <button class="device-tab-btn" data-device="windows" aria-pressed="false"><svg class="device-tab-icon"><use href="#icon-windows"></use></svg><span>Windows PC</span></button>
+                <button class="device-tab-btn" data-device="mac" aria-pressed="false"><svg class="device-tab-icon"><use href="#icon-mac"></use></svg><span>Mac</span></button>
+                <button class="device-tab-btn" data-device="chromebook" aria-pressed="false"><svg class="device-tab-icon"><use href="#icon-chromebook"></use></svg><span>Chromebook</span></button>
             </nav>
-
-            <div id="dynamic-device-content" class="device-content-area" aria-live="polite">
-                <!-- Content will be injected dynamically by JavaScript -->
-            </div>
+            <div id="dynamic-device-content" class="device-content-area" aria-live="polite"></div>
         </section>
 
-        <!-- STEP 4: Network Whitelisting -->
         <section class="card">
-            <header class="step-header-group">
-                <div class="step-number-badge">4</div>
-                <h2 class="step-title-text">Whitelist Event Domains</h2>
-            </header>
+            <header class="step-header-group"><div class="step-number-badge">4</div><h2 class="step-title-text">Whitelist Event Domains</h2></header>
             <p class="step-description">If your home network or device utilizes strict parental control filters (e.g., Family Link, Norton Family, or router-level blocks), you must manually allow the following domains. Failure to do so will result in blocked chat rooms and inaccessible activities.</p>
-            
             <div class="code-container">
-                <div class="code-header">
-                    <span class="code-header-title">Allowed Event Domains</span>
-                    <button class="copy-action-btn" id="btn-copy-domains" aria-label="Copy domains to clipboard">
-                        <svg class="copy-icon"><use href="#icon-copy"></use></svg>
-                        Copy All
-                    </button>
-                </div>
-                <!-- Text wraps cleanly on small mobile screens -->
-                <div class="code-snippet-box" id="domain-list-text">https://kalscouts.github.io/jota-joti-app/
+                <div class="code-header"><span class="code-header-title">Allowed Event Domains</span><button class="copy-action-btn" id="btn-copy-domains" aria-label="Copy domains to clipboard"><svg class="copy-icon"><use href="#icon-copy"></use></svg>Copy All</button></div>
+                <div class="code-snippet-box" id="domain-list-text">kalscouts.github.io/
 chat.jotajoti.info
 webchat.scoutlink.net
 jotajoti.info
@@ -1225,101 +326,99 @@ minecraft.scoutlink.net</div>
             </div>
         </section>
 
-        <!-- STEP 5: Quick Access Links -->
         <section class="card">
-            <header class="step-header-group">
-                <div class="step-number-badge">5</div>
-                <h2 class="step-title-text">Quick Access Links</h2>
-            </header>
+            <header class="step-header-group"><div class="step-number-badge">5</div><h2 class="step-title-text">Quick Access Links</h2></header>
             <p class="step-description">Once everything is configured, use these direct links to jump straight into the apps and sites your Scout needs for the weekend.</p>
-
             <div class="app-link-grid">
-                <a class="app-link-card" href="https://kalscouts.github.io/jota-joti-app/" target="_blank" rel="noopener noreferrer">
-                    <div class="app-link-icon-wrap"><svg><use href="#icon-dashboard"></use></svg></div>
-                    <div class="app-link-text">
-                        <div class="app-link-title">JOTA-JOTI Dashboard</div>
-                        <div class="app-link-desc">Main event web-app & activity hub</div>
-                    </div>
-                    <svg class="app-link-arrow"><use href="#icon-external"></use></svg>
-                </a>
-                <a class="app-link-card" href="https://webchat.scoutlink.net/" target="_blank" rel="noopener noreferrer">
-                    <div class="app-link-icon-wrap"><svg><use href="#icon-chat"></use></svg></div>
-                    <div class="app-link-text">
-                        <div class="app-link-title">ScoutLink Webchat</div>
-                        <div class="app-link-desc">Moderated chat rooms (no app needed)</div>
-                    </div>
-                    <svg class="app-link-arrow"><use href="#icon-external"></use></svg>
-                </a>
-                <a class="app-link-card" href="https://www.jotajoti.info/" target="_blank" rel="noopener noreferrer">
-                    <div class="app-link-icon-wrap"><svg><use href="#icon-globe"></use></svg></div>
-                    <div class="app-link-text">
-                        <div class="app-link-title">Official JOTA-JOTI Site</div>
-                        <div class="app-link-desc">Event info, badges & world map</div>
-                    </div>
-                    <svg class="app-link-arrow"><use href="#icon-external"></use></svg>
-                </a>
-                <a class="app-link-card" href="https://www.minecraft.net/en-us/download" target="_blank" rel="noopener noreferrer">
-                    <div class="app-link-icon-wrap"><svg><use href="#icon-cube"></use></svg></div>
-                    <div class="app-link-text">
-                        <div class="app-link-title">Minecraft (optional)</div>
-                        <div class="app-link-desc">Optional game server download</div>
-                    </div>
-                    <svg class="app-link-arrow"><use href="#icon-external"></use></svg>
-                </a>
+                <a class="app-link-card" href="https://kalscouts.github.io/" target="_blank" rel="noopener noreferrer"><div class="app-link-icon-wrap"><svg><use href="#icon-dashboard"></use></svg></div><div class="app-link-text"><div class="app-link-title">JOTA-JOTI Dashboard</div><div class="app-link-desc">Main event web-app & activity hub</div></div><svg class="app-link-arrow"><use href="#icon-external"></use></svg></a>
+                <a class="app-link-card" href="https://webchat.scoutlink.net/" target="_blank" rel="noopener noreferrer"><div class="app-link-icon-wrap"><svg><use href="#icon-chat"></use></svg></div><div class="app-link-text"><div class="app-link-title">ScoutLink Webchat</div><div class="app-link-desc">Moderated chat rooms (no app needed)</div></div><svg class="app-link-arrow"><use href="#icon-external"></use></svg></a>
+                <a class="app-link-card" href="https://www.jotajoti.info/" target="_blank" rel="noopener noreferrer"><div class="app-link-icon-wrap"><svg><use href="#icon-globe"></use></svg></div><div class="app-link-text"><div class="app-link-title">Official JOTA-JOTI Site</div><div class="app-link-desc">Event info, badges & world map</div></div><svg class="app-link-arrow"><use href="#icon-external"></use></svg></a>
+                <a class="app-link-card" href="https://www.minecraft.net/en-us/download" target="_blank" rel="noopener noreferrer"><div class="app-link-icon-wrap"><svg><use href="#icon-cube"></use></svg></div><div class="app-link-text"><div class="app-link-title">Minecraft (optional)</div><div class="app-link-desc">Optional game server download</div></div><svg class="app-link-arrow"><use href="#icon-external"></use></svg></a>
             </div>
         </section>
 
-        <!-- STEP 6: Final Checklist -->
         <section class="card">
-            <header class="step-header-group">
-                <div class="step-number-badge">6</div>
-                <h2 class="step-title-text">Final Preparation Checklist</h2>
-            </header>
+            <header class="step-header-group"><div class="step-number-badge">6</div><h2 class="step-title-text">Final Preparation Checklist</h2></header>
             <p class="step-description">Run through these mandatory checks 24 hours prior to the event commencement. Tap each item to mark it as completed.</p>
-
             <div class="task-list" id="interactive-checklist">
-                <div class="task-item" data-task-id="task-1" role="checkbox" aria-checked="false" tabindex="0">
-                    <div class="task-checkbox">
-                        <svg class="check-icon"><use href="#icon-check"></use></svg>
-                    </div>
-                    <span class="task-label">I have logged into the main dashboard using the 4-digit PIN to verify access.</span>
-                </div>
-                
-                <div class="task-item" data-task-id="task-2" role="checkbox" aria-checked="false" tabindex="0">
-                    <div class="task-checkbox">
-                        <svg class="check-icon"><use href="#icon-check"></use></svg>
-                    </div>
-                    <span class="task-label">The primary device is fully charged, updated, and the charging cable is readily accessible.</span>
-                </div>
-                
-                <div class="task-item" data-task-id="task-3" role="checkbox" aria-checked="false" tabindex="0">
-                    <div class="task-checkbox">
-                        <svg class="check-icon"><use href="#icon-check"></use></svg>
-                    </div>
-                    <span class="task-label">A functioning pair of headphones with a microphone has been tested for voice channels.</span>
-                </div>
-                
-                <div class="task-item" data-task-id="task-4" role="checkbox" aria-checked="false" tabindex="0">
-                    <div class="task-checkbox">
-                        <svg class="check-icon"><use href="#icon-check"></use></svg>
-                    </div>
-                    <span class="task-label">Parental screen-time limits have been explicitly extended for Friday, Saturday, and Sunday.</span>
-                </div>
-                
-                <div class="task-item" data-task-id="task-5" role="checkbox" aria-checked="false" tabindex="0">
-                    <div class="task-checkbox">
-                        <svg class="check-icon"><use href="#icon-check"></use></svg>
-                    </div>
-                    <span class="task-label">The designated Scout Leader's emergency contact number is written down near the device.</span>
-                </div>
+                <div class="task-item" data-task-id="task-1" role="checkbox" aria-checked="false" tabindex="0"><div class="task-checkbox"><svg class="check-icon"><use href="#icon-check"></use></svg></div><span class="task-label">I have logged into the main dashboard using the 4-digit PIN to verify access.</span></div>
+                <div class="task-item" data-task-id="task-2" role="checkbox" aria-checked="false" tabindex="0"><div class="task-checkbox"><svg class="check-icon"><use href="#icon-check"></use></svg></div><span class="task-label">The primary device is fully charged, updated, and the charging cable is readily accessible.</span></div>
+                <div class="task-item" data-task-id="task-3" role="checkbox" aria-checked="false" tabindex="0"><div class="task-checkbox"><svg class="check-icon"><use href="#icon-check"></use></svg></div><span class="task-label">A functioning pair of headphones with a microphone has been tested for voice channels.</span></div>
+                <div class="task-item" data-task-id="task-4" role="checkbox" aria-checked="false" tabindex="0"><div class="task-checkbox"><svg class="check-icon"><use href="#icon-check"></use></svg></div><span class="task-label">Parental screen-time limits have been explicitly extended for Friday, Saturday, and Sunday.</span></div>
+                <div class="task-item" data-task-id="task-5" role="checkbox" aria-checked="false" tabindex="0"><div class="task-checkbox"><svg class="check-icon"><use href="#icon-check"></use></svg></div><span class="task-label">The designated Scout Leader's emergency contact number is written down near the device.</span></div>
+                <div class="task-item" data-task-id="task-6" role="checkbox" aria-checked="false" tabindex="0"><div class="task-checkbox"><svg class="check-icon"><use href="#icon-check"></use></svg></div><span class="task-label">The correct section form has been signed and returned to the Leader.</span></div>
             </div>
         </section>
 
-        <!-- SECTION: Cyber Safety Code of Conduct -->
+        <!-- STEP 7: Section Forms -->
+        <section class="card" id="section-forms">
+            <header class="step-header-group"><div class="step-number-badge">7</div><h2 class="step-title-text">Section Permission Forms</h2></header>
+            <p class="step-description">Every Scout must have a completed section form signed and returned to the Leader in Charge. Tap your child's section below to download its form, sign it, and email it back to <a href="mailto:jotajoti.kalgoolie@gmail.com">jotajoti.kalgoolie@gmail.com</a>.</p>
+
+            <div class="section-form-grid">
+                <div class="section-form-card" id="form-joeys">
+                    <span class="section-form-name">Joey Scouts</span>
+                    <ul class="section-form-needs">
+                        <li>Signed section form returned to your Leader</li>
+                        <li>Medical &amp; emergency contact details completed</li>
+                    </ul>
+                    <span class="section-form-email-note">After signing, email the completed form to <a href="mailto:jotajoti.kalgoolie@gmail.com">jotajoti.kalgoolie@gmail.com</a>.</span>
+                    <div class="form-action-row">
+                        <a class="btn-secondary btn-download-form" href="Kalgoolie-Joey-Section-Form.pdf" download="Kalgoolie-Joey-Section-Form.pdf" target="_blank" rel="noopener"><svg class="btn-icon"><use href="#icon-doc"></use></svg><span>Download Form</span></a>
+                        <button class="btn-secondary icon-only-btn btn-copy-link" data-section-id="form-joeys" data-section-name="Joey Scouts" aria-label="Copy link to Joey Scouts form"><svg><use href="#icon-copy"></use></svg></button>
+                        <button class="btn-secondary icon-only-btn btn-share-link" data-section-id="form-joeys" data-section-name="Joey Scouts" aria-label="Share link to Joey Scouts form"><svg><use href="#icon-external"></use></svg></button>
+                    </div>
+                </div>
+                <div class="section-form-card" id="form-cubs">
+                    <span class="section-form-name">Cub Scouts</span>
+                    <ul class="section-form-needs">
+                        <li>Signed section form returned to your Leader</li>
+                        <li>Medical &amp; emergency contact details completed</li>
+                    </ul>
+                    <span class="section-form-email-note">After signing, email the completed form to <a href="mailto:jotajoti.kalgoolie@gmail.com">jotajoti.kalgoolie@gmail.com</a>.</span>
+                    <div class="form-action-row">
+                        <a class="btn-secondary btn-download-form" href="Kalgoolie-Cub-Section-Form.pdf" download="Kalgoolie-Cub-Section-Form.pdf" target="_blank" rel="noopener"><svg class="btn-icon"><use href="#icon-doc"></use></svg><span>Download Form</span></a>
+                        <button class="btn-secondary icon-only-btn btn-copy-link" data-section-id="form-cubs" data-section-name="Cub Scouts" aria-label="Copy link to Cub Scouts form"><svg><use href="#icon-copy"></use></svg></button>
+                        <button class="btn-secondary icon-only-btn btn-share-link" data-section-id="form-cubs" data-section-name="Cub Scouts" aria-label="Share link to Cub Scouts form"><svg><use href="#icon-external"></use></svg></button>
+                    </div>
+                </div>
+                <div class="section-form-card" id="form-scouts">
+                    <span class="section-form-name">Scouts</span>
+                    <ul class="section-form-needs">
+                        <li>Signed section form returned to your Leader</li>
+                        <li>Medical &amp; emergency contact details completed</li>
+                    </ul>
+                    <span class="section-form-email-note">After signing, email the completed form to <a href="mailto:jotajoti.kalgoolie@gmail.com">jotajoti.kalgoolie@gmail.com</a>.</span>
+                    <div class="form-action-row">
+                        <a class="btn-secondary btn-download-form" href="Kalgoolie-Scout-Section-Form.pdf" download="Kalgoolie-Scout-Section-Form.pdf" target="_blank" rel="noopener"><svg class="btn-icon"><use href="#icon-doc"></use></svg><span>Download Form</span></a>
+                        <button class="btn-secondary icon-only-btn btn-copy-link" data-section-id="form-scouts" data-section-name="Scouts" aria-label="Copy link to Scouts form"><svg><use href="#icon-copy"></use></svg></button>
+                        <button class="btn-secondary icon-only-btn btn-share-link" data-section-id="form-scouts" data-section-name="Scouts" aria-label="Share link to Scouts form"><svg><use href="#icon-external"></use></svg></button>
+                    </div>
+                </div>
+                <div class="section-form-card" id="form-vents">
+                    <span class="section-form-name">Venturer Scouts</span>
+                    <ul class="section-form-needs">
+                        <li>Signed section form returned to your Leader</li>
+                        <li>Medical &amp; emergency contact details completed</li>
+                    </ul>
+                    <span class="section-form-email-note">After signing, email the completed form to <a href="mailto:jotajoti.kalgoolie@gmail.com">jotajoti.kalgoolie@gmail.com</a>.</span>
+                    <div class="form-action-row">
+                        <a class="btn-secondary btn-download-form" href="Kalgoolie-Venturer-Section-Form.pdf" download="Kalgoolie-Venturer-Section-Form.pdf" target="_blank" rel="noopener"><svg class="btn-icon"><use href="#icon-doc"></use></svg><span>Download Form</span></a>
+                        <button class="btn-secondary icon-only-btn btn-copy-link" data-section-id="form-vents" data-section-name="Venturer Scouts" aria-label="Copy link to Venturer Scouts form"><svg><use href="#icon-copy"></use></svg></button>
+                        <button class="btn-secondary icon-only-btn btn-share-link" data-section-id="form-vents" data-section-name="Venturer Scouts" aria-label="Share link to Venturer Scouts form"><svg><use href="#icon-external"></use></svg></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-panel" style="margin-top: var(--spacing-4);">
+                <svg class="info-icon"><use href="#icon-info"></use></svg>
+                <span>Questions? Please contact us at <a href="mailto:jotajoti.kalgoolie@gmail.com">jotajoti.kalgoolie@gmail.com</a>.</span>
+            </div>
+        </section>
+
         <section class="card">
             <h2 class="step-title-text" style="margin-bottom: var(--spacing-3);">Cyber Safety Code of Conduct</h2>
             <p class="step-description">Safety is our absolute priority. Please review these rules with your Scout before they participate in any online communication channels.</p>
-            
             <ul class="instruction-steps" style="margin-top: var(--spacing-4);">
                 <li><strong>No Personal Details:</strong> Never share your full name, home address, school name, phone number, or social media handles with anyone on chat, even if they claim to be a Scout.</li>
                 <li><strong>Use Only First Names:</strong> Always use your first name or your assigned Scout nickname when conversing on international channels.</li>
@@ -1329,254 +428,148 @@ minecraft.scoutlink.net</div>
             </ul>
         </section>
 
-        <!-- SECTION: Glossary -->
         <section class="card">
             <h2 class="step-title-text" style="margin-bottom: var(--spacing-3);">Parent Glossary</h2>
             <p class="step-description">Scouting acronyms can be confusing. Here is a brief guide to the terms your Scout might use over the weekend.</p>
-            
             <div class="accordion-group">
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="false">
-                        <span>What is JOTA?</span>
-                        <svg class="accordion-icon"><use href="#icon-chevron"></use></svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>JOTA stands for Jamboree on the Air. It is an annual event in which Scouts and Guides all over the world speak to each other by means of amateur radio contacts. Local ham radio operators volunteer their time and equipment to make this possible.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="false">
-                        <span>What is JOTI?</span>
-                        <svg class="accordion-icon"><use href="#icon-chevron"></use></svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>JOTI stands for Jamboree on the Internet. It runs parallel to JOTA and connects Scouts globally via text chat, voice chat, video conferencing, and multiplayer games hosted on secure, moderated servers.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="false">
-                        <span>What is ScoutLink?</span>
-                        <svg class="accordion-icon"><use href="#icon-chevron"></use></svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>ScoutLink is a global, non-profit network providing safe, supervised chat environments for Scouts and Guides. They host the primary IRC (Internet Relay Chat) servers used during the JOTI weekend.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="false">
-                        <span>What is a QSO?</span>
-                        <svg class="accordion-icon"><use href="#icon-chevron"></use></svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>QSO is an amateur radio term meaning a conversation or contact between two operators. During JOTA, Scouts will attempt to log as many QSOs as possible with other groups around the world.</p>
-                    </div>
-                </div>
+                <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>What is JOTA?</span><svg class="accordion-icon"><use href="#icon-chevron"></use></svg></button><div class="accordion-content"><p>JOTA stands for Jamboree on the Air. It is an annual event in which Scouts and Guides all over the world speak to each other by means of amateur radio contacts. Local ham radio operators volunteer their time and equipment to make this possible.</p></div></div>
+                <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>What is JOTI?</span><svg class="accordion-icon"><use href="#icon-chevron"></use></svg></button><div class="accordion-content"><p>JOTI stands for Jamboree on the Internet. It runs parallel to JOTA and connects Scouts globally via text chat, voice chat, video conferencing, and multiplayer games hosted on secure, moderated servers.</p></div></div>
+                <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>What is ScoutLink?</span><svg class="accordion-icon"><use href="#icon-chevron"></use></svg></button><div class="accordion-content"><p>ScoutLink is a global, non-profit network providing safe, supervised chat environments for Scouts and Guides. They host the primary IRC (Internet Relay Chat) servers used during the JOTI weekend.</p></div></div>
+                <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>What is a QSO?</span><svg class="accordion-icon"><use href="#icon-chevron"></use></svg></button><div class="accordion-content"><p>QSO is an amateur radio term meaning a conversation or contact between two operators. During JOTA, Scouts will attempt to log as many QSOs as possible with other groups around the world.</p></div></div>
             </div>
         </section>
 
-        <!-- SECTION: FAQ -->
         <section class="card">
             <h2 class="step-title-text" style="margin-bottom: var(--spacing-3);">Frequently Asked Questions</h2>
-            
             <div class="accordion-group">
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="false">
-                        <span>Are there any costs associated with this event?</span>
-                        <svg class="accordion-icon"><use href="#icon-chevron"></use></svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>No. Participation in the online components of JOTA-JOTI is entirely free. All official platforms, web-apps, and communication channels are hosted by volunteers and global scouting organizations at no cost to the individual.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="false">
-                        <span>Why is the dashboard locked with a countdown?</span>
-                        <svg class="accordion-icon"><use href="#icon-chevron"></use></svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>The global servers have limited capacity and are only active during specific timeframes. The dashboard is programmed to unlock exactly 24 hours prior to the official opening ceremony to prevent server overload and ensure a synchronized start globally.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="false">
-                        <span>What if my Scout does not have a personal device?</span>
-                        <svg class="accordion-icon"><use href="#icon-chevron"></use></svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>This is completely fine. Please communicate with your local Scout Leader as early as possible. Most groups operate a "hub" environment at the Scout Hall where communal laptops and tablets are provided for youth members who require them.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="false">
-                        <span>Is the Minecraft server mandatory?</span>
-                        <svg class="accordion-icon"><use href="#icon-chevron"></use></svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>No. The ScoutLink Minecraft server is a highly popular but entirely optional side-activity. It requires a purchased copy of Minecraft Java or Bedrock Edition. If your Scout does not own the game, there are dozens of other free activities available on the dashboard.</p>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <button class="accordion-trigger" aria-expanded="false">
-                        <span>How is the chat monitored?</span>
-                        <svg class="accordion-icon"><use href="#icon-chevron"></use></svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>ScoutLink chat channels are actively moderated 24/7 during the event weekend by trained adult volunteers from around the globe. Automated filters also block profanity and the sharing of personal information like phone numbers or email addresses.</p>
-                    </div>
-                </div>
+                <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>Do I need to pay to use the JOTA-JOTI website?</span><svg class="accordion-icon"><use href="#icon-chevron"></use></svg></button><div class="accordion-content"><p>No. The online components of JOTA-JOTI are free. Your Leaders will let you know about any details for in-person activities.</p></div></div>
+                <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>Why is the dashboard locked with a countdown?</span><svg class="accordion-icon"><use href="#icon-chevron"></use></svg></button><div class="accordion-content"><p>The global servers have limited capacity and are only active during specific timeframes. The dashboard is programmed to unlock exactly 24 hours prior to the official opening ceremony to prevent server overload and ensure a synchronized start globally.</p></div></div>
+                <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>What if my Scout does not have a personal device?</span><svg class="accordion-icon"><use href="#icon-chevron"></use></svg></button><div class="accordion-content"><p>This is completely fine. Please communicate with your local Scout Leader as early as possible. Most groups operate a "hub" environment at the Scout Hall where communal laptops and tablets are provided for youth members who require them.</p></div></div>
+                <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>Is the Minecraft server mandatory?</span><svg class="accordion-icon"><use href="#icon-chevron"></use></svg></button><div class="accordion-content"><p>No. The ScoutLink Minecraft server is a highly popular but entirely optional side-activity. It requires a purchased copy of Minecraft Java or Bedrock Edition. If your Scout does not own the game, there are dozens of other free activities available on the dashboard.</p></div></div>
+                <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>How is the chat monitored?</span><svg class="accordion-icon"><use href="#icon-chevron"></use></svg></button><div class="accordion-content"><p>ScoutLink chat channels are actively moderated 24/7 during the event weekend by trained adult volunteers from around the globe. Automated filters also block profanity and the sharing of personal information like phone numbers or email addresses.</p></div></div>
+            </div>
+        </section>
+
+        <!-- TERMS & CONDITIONS: kept as the final section on the page -->
+        <section class="card terms-section" id="terms-conditions">
+            <h2 class="step-title-text" style="margin-bottom: var(--spacing-3);">Terms & Conditions</h2>
+            <p class="step-description">This section is the full reference for the Application to Attend Activity (Y3) forms for Cubs, Joeys, and Ventures & Scouts. Share the link to this page and it will always be here at the bottom for anyone who asks about our terms and conditions.</p>
+
+            <div class="terms-toc">
+                <a class="quick-link-chip" href="#terms-activity">Activity Details</a>
+                <a class="quick-link-chip" href="#terms-medical">Medical Details</a>
+                <a class="quick-link-chip" href="#terms-water">Water Activities</a>
+                <a class="quick-link-chip" href="#terms-photo">Photo/Video Consent</a>
+                <a class="quick-link-chip" href="#terms-waiver">Liability Waiver</a>
+                <a class="quick-link-chip" href="#terms-cyber">Cyber Safety</a>
+                <a class="quick-link-chip" href="#terms-official">Official Policies</a>
+                <a class="quick-link-chip" href="#terms-platforms">Other Platforms</a>
+                <a class="quick-link-chip" href="#terms-contact">Contacts</a>
+            </div>
+
+            <div class="terms-block" id="terms-activity">
+                <h3>1. Activity Details</h3>
+                <!-- ADD EVENT DATES, TIMES, VENUE AND PICK-UP DETAILS FOR EACH SECTION HERE -->
+                <p>JOTA-JOTI 2026 is run by Kalgoolie Scout Group. Dates, times, venue and pick-up details for each section will be confirmed by your Leaders. A completed sign-up form (Step 1) and a signed section form (Step 7), emailed back to us, are both required before a place is confirmed. All activities are held under direct adult supervision, and transport is arranged by parents/guardians.</p>
+            </div>
+
+            <div class="terms-block" id="terms-medical">
+                <h3>2. Medical Details</h3>
+                <p>Parents/guardians must disclose the youth member's known allergies, dietary requirements, current medication (type, dosage and frequency), and any other relevant ailments or disabilities on the section form, so Leaders can respond appropriately. Tetanus immunisation status (within the past 5 years) should also be recorded, along with Medicare, private health fund, ambulance cover and treating doctor details where applicable, in case a hospital requires them.</p>
+            </div>
+
+            <div class="terms-block" id="terms-water">
+                <h3>3. Water Activities Authority</h3>
+                <p>Where an activity includes water activities (swimming, boating, canoeing, kayaking, rafting or sailing), parents/guardians will separately be asked to confirm consent and their child's swimming ability (50m unaided and 50m in shirt/shorts/shoes with a flotation device) before participation.</p>
+            </div>
+
+            <div class="terms-block" id="terms-photo">
+                <h3>4. Photo & Video Consent</h3>
+                <p>Any individual or group photo/video taken at a Scouts WA activity may be used for promotional purposes on a Scouts WA managed site. Scouts WA cannot guarantee that photos or video will not also appear on other, non-Scouts WA sites (for example, if shared further by third parties).</p>
+            </div>
+
+            <div class="terms-block" id="terms-waiver">
+                <h3>5. Adventurous Activities & Liability Waiver</h3>
+                <p>Any adventurous activities will be listed on the section form. By signing the section form, the parent/guardian gives permission for the applicant to attend the Scouting activity described, including any listed adventurous activities, and authorises the Leader in charge to seek medical assistance for the applicant should the need arise. Signing also confirms the parent/guardian has read and agreed to the Scouts WA Liability Statement (Waiver), published at <a href="https://scoutswa.com.au/policies-procedures/" target="_blank" rel="noopener noreferrer">scoutswa.com.au/policies-procedures</a>.</p>
+            </div>
+
+            <div class="terms-block" id="terms-cyber">
+                <h3>6. Cyber Safety Code of Conduct</h3>
+                <p>All Scouts participating in JOTA-JOTI's online chat, voice, video and gaming activities must follow the Cyber Safety Code of Conduct set out earlier on this page: no personal details are to be shared, first names or assigned nicknames only, official links only, concerning behaviour must be reported to a parent or Leader immediately, and all participants must be respectful in line with the Scout Law. Chat is moderated 24/7 by trained adult volunteers, with automated filters for profanity and personal information.</p>
+            </div>
+
+            <div class="terms-block" id="terms-official">
+                <h3>7. Official JOTA-JOTI & ScoutLink Policies (Required to Create an Account)</h3>
+                <p>Creating a dashboard login, joining chat, or using the Minecraft server means agreeing to World Scouting's and ScoutLink's own rules, on top of everything above. Please read these with your Scout before the event:</p>
+                <ul>
+                    <li><strong>Minimum age 13:</strong> Participants must be 13 years or older to sign up for JOTA-JOTI and to use ScoutLink's chat, webchat and Minecraft services directly. Younger Cubs and Joeys take part under a parent/Leader-supervised group login at the Hall, not an individual account.</li>
+                    <li><strong>Safe JOTA-JOTI Pledge</strong> &mdash; the official conduct pledge every participant agrees to: <a href="https://www.jotajoti.info/be-safe" target="_blank" rel="noopener noreferrer">jotajoti.info/be-safe</a></li>
+                    <li><strong>Staying Safe Online During JOTI</strong> (World Scout Bureau): <a href="https://www.jotajoti.info/staying-safe-online-during-joti" target="_blank" rel="noopener noreferrer">jotajoti.info/staying-safe-online-during-joti</a></li>
+                    <li><strong>ScoutLink Network Rules</strong> (governs the webchat and Minecraft server): <a href="https://www.scoutlink.net/rules" target="_blank" rel="noopener noreferrer">scoutlink.net/rules</a></li>
+                    <li><strong>ScoutLink Safety Guide:</strong> <a href="https://www.scoutlink.net/safety/" target="_blank" rel="noopener noreferrer">scoutlink.net/safety</a></li>
+                    <li><strong>ScoutLink Privacy Policy:</strong> <a href="https://www.scoutlink.net/privacy" target="_blank" rel="noopener noreferrer">scoutlink.net/privacy</a></li>
+                    <li><strong>Report a concern directly to World Scouting's Safe From Harm team:</strong> <a href="mailto:safejotajoti@scout.org">safejotajoti@scout.org</a></li>
+                </ul>
+            </div>
+
+            <div class="terms-block" id="terms-platforms">
+                <h3>8. Other Platforms We May Use</h3>
+                <p>Besides the JOTA-JOTI dashboard and ScoutLink (covered above), Leaders may use the following third-party platforms during the weekend depending on the activity. Each has its own separate terms and privacy policy, which govern that platform rather than Kalgoolie Scout Group or Scouts WA:</p>
+                <ul>
+                    <li><strong>Google (sign-up form & email):</strong> our registration form and email correspondence run on Google. <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Google Terms of Service</a> &middot; <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.</li>
+                    <li><strong>Video calling (Zoom / Google Meet / Skype):</strong> some JOTA contacts with partner Scout Groups overseas are arranged as a scheduled video call rather than radio. Only Leader-supervised, Leader-arranged calls on official Group equipment are used &mdash; never a personal 1:1 call. <a href="https://zoom.us/terms" target="_blank" rel="noopener noreferrer">Zoom Terms</a> &middot; <a href="https://explore.zoom.us/en/privacy/" target="_blank" rel="noopener noreferrer">Zoom Privacy</a>.</li>
+                    <li><strong>Discord:</strong> some JOTI activities are coordinated with partner Units over Discord voice/text channels, always under direct Leader supervision on a Group-managed server &mdash; Scouts do not create personal accounts or join private/unofficial servers. Discord's own terms require users to be 13 or older. <a href="https://discord.com/terms" target="_blank" rel="noopener noreferrer">Discord Terms of Service</a> &middot; <a href="https://discord.com/privacy" target="_blank" rel="noopener noreferrer">Discord Privacy Policy</a>.</li>
+                    <li><strong>Minecraft (Mojang/Microsoft), optional:</strong> playing on the ScoutLink Minecraft server requires your own purchased copy and a Microsoft account. <a href="https://www.minecraft.net/en-us/eula" target="_blank" rel="noopener noreferrer">Minecraft End User Licence Agreement</a> &middot; <a href="https://www.microsoft.com/en-us/servicesagreement" target="_blank" rel="noopener noreferrer">Microsoft Services Agreement</a> &middot; <a href="https://privacy.microsoft.com/en-us/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft Privacy Statement</a>.</li>
+                </ul>
+                <p>As with every platform used for JOTA-JOTI: approved platforms only, no personal accounts or private chats, Leader supervision at all times, and the Cyber Safety Code of Conduct above still applies in full.</p>
+            </div>
+
+            <div class="terms-block" id="terms-contact">
+                <h3>9. Contacts & Scouts WA Policies</h3>
+                <p>Contact: <a href="mailto:jotajoti.kalgoolie@gmail.com">jotajoti.kalgoolie@gmail.com</a>. Completed, signed forms should be emailed to <strong>jotajoti.kalgoolie@gmail.com</strong>.</p>
+                <p style="margin-top: var(--spacing-2);">Scouts WA: 133 Scarborough Beach Rd, Mt Hawthorn WA 6016 &middot; (08) 6240 7700 &middot; <a href="mailto:enquiries@scoutswa.com.au">enquiries@scoutswa.com.au</a> &middot; <a href="https://scoutswa.com.au" target="_blank" rel="noopener noreferrer">scoutswa.com.au</a>.</p>
+                <p style="margin-top: var(--spacing-2);">Full Scouts WA policies and procedures, including the Liability Statement (Waiver) referred to above: <a href="https://scoutswa.com.au/policies-procedures/" target="_blank" rel="noopener noreferrer">scoutswa.com.au/policies-procedures</a>.</p>
+                <p style="margin-top: var(--spacing-3); font-weight: 700; color: var(--color-neutral-text-main);">This is the bottom of the page. If you have been sent this link for our Terms & Conditions, everything above in this section applies.</p>
+            </div>
+
+            <div class="unofficial-notice">
+                <strong>Unofficial guide notice:</strong> this page is an unofficial, volunteer-made parent guide put together by Kalgoolie Scout Group leaders for our own Scouts. It is not published by, and is not an official page of, World Scouting (WOSM), JOTA-JOTI, ScoutLink, or Scouts WA. For the authoritative rules, always refer to the official links above (jotajoti.info, scoutlink.net) and to <a href="https://scoutswa.com.au" target="_blank" rel="noopener noreferrer">scoutswa.com.au</a>.
             </div>
         </section>
 
     </main>
 
-    <!-- ======================================================================
-         FOOTER & TOAST
-         ====================================================================== -->
     <footer class="site-footer">
         <div class="footer-inner">
-            <p>Boulder Scout Group &middot; Official JOTA-JOTI 2026 Preparation Portal</p>
+            <p>Kalgoolie Scout Group &middot; Official JOTA-JOTI 2026 Preparation Portal</p>
+            <p style="margin-top: var(--spacing-2);"><a href="#terms-conditions">Terms & Conditions</a></p>
             <p style="margin-top: var(--spacing-2); opacity: 0.7;">This setup guide is maintained by volunteer leaders to ensure a safe and smooth digital experience.</p>
         </div>
     </footer>
 
-    <!-- Toast notification element -->
     <div id="toast-notification" class="toast-container" role="alert" aria-live="assertive">
         <svg class="check-icon" style="opacity: 1; transform: scale(1); width: 16px; height: 16px;"><use href="#icon-check"></use></svg>
         <span id="toast-message">Action successful</span>
     </div>
 
-    <!-- ======================================================================
-         DYNAMIC JAVASCRIPT ENGINE
-         ====================================================================== -->
     <script>
         "use strict";
-
-        /**
-         * Device configuration dataset containing responsive instructions and links.
-         */
         const deviceDataConfig = {
-            ios: {
-                appSetup: `
-                    <h3 class="step-subheading">Web-App Installation (Safari)</h3>
-                    <ol class="instruction-steps">
-                        <li>Open the <strong>Safari</strong> browser on your iPhone or iPad.</li>
-                        <li>Navigate to: <a href="https://kalscouts.github.io/jota-joti-app/" target="_blank" rel="noopener">kalscouts.github.io/jota-joti-app//</a></li>
-                        <li>Tap the <strong>Share</strong> icon at the bottom of the screen (a box with an arrow pointing up).</li>
-                        <li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>
-                        <li>Tap <strong>Add</strong> in the top right corner.</li>
-                    </ol>
-                `,
-                screenTime: `
-                    <h3 class="step-subheading">Adjusting Apple Screen Time</h3>
-                    <ol class="instruction-steps">
-                        <li>Open <strong>Settings</strong> and tap <strong>Screen Time</strong>.</li>
-                        <li>Under <strong>Downtime</strong>, adjust hours for the 16–18 October weekend.</li>
-                        <li>Under <strong>Always Allowed</strong>, ensure <em>Safari</em> is added so access is not cut off.</li>
-                    </ol>
-                `,
-                quickLinks: `
-                    <h3 class="step-subheading">Quick Options</h3>
-                    <div class="quick-links-wrapper">
-                        <a class="quick-link-chip" href="https://kalscouts.github.io/jota-joti-app/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Open in Safari</a>
-                        <a class="quick-link-chip" href="https://support.apple.com/en-us/108783" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Apple Screen Time Help</a>
-                    </div>
-                `
-            },
-            android: {
-                appSetup: `
-                    <h3 class="step-subheading">Web-App Installation (Chrome)</h3>
-                    <ol class="instruction-steps">
-                        <li>Open <strong>Google Chrome</strong> on your Android device.</li>
-                        <li>Navigate to: <a href="https://kalscouts.github.io/jota-joti-app/" target="_blank" rel="noopener"kalscouts.github.io/jota-joti-app//</a></li>
-                        <li>Tap the 3 vertical menu dots in the upper right corner.</li>
-                        <li>Select <strong>Install app</strong> or <strong>Add to Home screen</strong>.</li>
-                    </ol>
-                `,
-                screenTime: `
-                    <h3 class="step-subheading">Adjusting Family Link / Wellbeing</h3>
-                    <ol class="instruction-steps">
-                        <li>Open <strong>Settings</strong> &gt; <strong>Digital Wellbeing & parental controls</strong>.</li>
-                        <li>If using <strong>Family Link</strong>, open the parent app and increase the daily screen limit for Friday–Sunday.</li>
-                    </ol>
-                `,
-                quickLinks: `
-                    <h3 class="step-subheading">Quick Options</h3>
-                    <div class="quick-links-wrapper">
-                        <a class="quick-link-chip" href="https://kalscouts.github.io/jota-joti-app/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Open in Chrome</a>
-                        <a class="quick-link-chip" href="https://families.google.com/familylink/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Google Family Link</a>
-                    </div>
-                `
-            },
-            windows: {
-                appSetup: `
-                    <h3 class="step-subheading">Web-App Installation (Windows PC)</h3>
-                    <ol class="instruction-steps">
-                        <li>Open Chrome or Microsoft Edge on your PC.</li>
-                        <li>Navigate to: <a href="https://kalscouts.github.io/jota-joti-app/" target="_blank" rel="noopener">kalscouts.github.io/jota-joti-app/</a></li>
-                        <li>Click the <strong>App Available / Install</strong> icon in the right side of the URL address bar.</li>
-                    </ol>
-                `,
-                screenTime: `
-                    <h3 class="step-subheading">Adjusting Microsoft Family Safety</h3>
-                    <ol class="instruction-steps">
-                        <li>Visit <a href="https://account.microsoft.com/family" target="_blank" rel="noopener">account.microsoft.com/family</a> on the parent account.</li>
-                        <li>Select your Scout's member profile and adjust screen time allowances under the <strong>Screen Time</strong> tab.</li>
-                    </ol>
-                `,
-                quickLinks: `
-                    <h3 class="step-subheading">Quick Options</h3>
-                    <div class="quick-links-wrapper">
-                        <a class="quick-link-chip" href="https://kalscouts.github.io/jota-joti-app/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Launch Dashboard</a>
-                        <a class="quick-link-chip" href="https://account.microsoft.com/family" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Microsoft Family Settings</a>
-                    </div>
-                `
-            },
-            mac: {
-                appSetup: `
-                    <h3 class="step-subheading">Web-App Installation (Mac)</h3>
-                    <ol class="instruction-steps">
-                        <li>Open Safari or Google Chrome.</li>
-                        <li>Navigate to: <a href="https://kalscouts.github.io/jota-joti-app/" target="_blank" rel="noopener">kalscouts.github.io/jota-joti-app/</a></li>
-                        <li>Drag the URL address from the browser top bar into your Mac Dock or Favorites for quick access.</li>
-                    </ol>
-                `,
-                screenTime: `
-                    <h3 class="step-subheading">Adjusting macOS Screen Time</h3>
-                    <ol class="instruction-steps">
-                        <li>Open <strong>System Settings</strong> &gt; <strong>Screen Time</strong>.</li>
-                        <li>Review Downtime & App Limits to allow browser access during event hours.</li>
-                    </ol>
-                `,
-                quickLinks: `
-                    <h3 class="step-subheading">Quick Options</h3>
-                    <div class="quick-links-wrapper">
-                        <a class="quick-link-chip" href="https://kalscouts.github.io/jota-joti-app/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Launch Dashboard</a>
-                    </div>
-                `
-            },
-            chromebook: {
-                appSetup: `
-                    <h3 class="step-subheading">Web-App Installation (Chromebook)</h3>
-                    <ol class="instruction-steps">
-                        <li>Open Chrome on your Chromebook.</li>
-                        <li>Navigate to: <a href="https://kalscouts.github.io/jota-joti-app/" target="_blank" rel="noopener">kalscouts.github.io/jota-joti-app/</a></li>
-                        <li>Click the 3 dots menu &gt; <strong>Save and Share</strong> &gt; <strong>Create Shortcut</strong> to pin it to your shelf.</li>
-                    </ol>
-                `,
-                screenTime: `
-                    <h3 class="step-subheading">Adjusting ChromeOS Limits</h3>
-                    <ol class="instruction-steps">
-                        <li>Manage app timers and bonus time directly via the <strong>Google Family Link</strong> parent app.</li>
-                    </ol>
-                `,
-                quickLinks: `
-                    <h3 class="step-subheading">Quick Options</h3>
-                    <div class="quick-links-wrapper">
-                        <a class="quick-link-chip" href="https://kalscouts.github.io/jota-joti-app/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Launch Dashboard</a>
-                        <a class="quick-link-chip" href="https://families.google.com/familylink/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Family Link</a>
-                    </div>
-                `
-            }
+            ios: { appSetup: `<h3 class="step-subheading">Web-App Installation (Safari)</h3><ol class="instruction-steps"><li>Open the <strong>Safari</strong> browser on your iPhone or iPad.</li><li>Navigate to: <a href="https://kalscouts.github.io/" target="_blank" rel="noopener">kalscouts.github.io/</a></li><li>Tap the <strong>Share</strong> icon at the bottom of the screen (a box with an arrow pointing up).</li><li>Scroll down and tap <strong>Add to Home Screen</strong>.</li><li>Tap <strong>Add</strong> in the top right corner.</li></ol>`,
+                screenTime: `<h3 class="step-subheading">Adjusting Apple Screen Time</h3><ol class="instruction-steps"><li>Open <strong>Settings</strong> and tap <strong>Screen Time</strong>.</li><li>Under <strong>Downtime</strong>, adjust hours for the 16–18 October weekend.</li><li>Under <strong>Always Allowed</strong>, ensure <em>Safari</em> is added so access is not cut off.</li></ol>`,
+                quickLinks: `<h3 class="step-subheading">Quick Options</h3><div class="quick-links-wrapper"><a class="quick-link-chip" href="https://kalscouts.github.io/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Open in Safari</a><a class="quick-link-chip" href="https://support.apple.com/en-us/108783" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Apple Screen Time Help</a></div>` },
+            android: { appSetup: `<h3 class="step-subheading">Web-App Installation (Chrome)</h3><ol class="instruction-steps"><li>Open <strong>Google Chrome</strong> on your Android device.</li><li>Navigate to: <a href="https://kalscouts.github.io/" target="_blank" rel="noopener">kalscouts.github.io/</a></li><li>Tap the 3 vertical menu dots in the upper right corner.</li><li>Select <strong>Install app</strong> or <strong>Add to Home screen</strong>.</li></ol>`,
+                screenTime: `<h3 class="step-subheading">Adjusting Family Link / Wellbeing</h3><ol class="instruction-steps"><li>Open <strong>Settings</strong> &gt; <strong>Digital Wellbeing & parental controls</strong>.</li><li>If using <strong>Family Link</strong>, open the parent app and increase the daily screen limit for Friday–Sunday.</li></ol>`,
+                quickLinks: `<h3 class="step-subheading">Quick Options</h3><div class="quick-links-wrapper"><a class="quick-link-chip" href="https://kalscouts.github.io/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Open in Chrome</a><a class="quick-link-chip" href="https://families.google.com/familylink/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Google Family Link</a></div>` },
+            windows: { appSetup: `<h3 class="step-subheading">Web-App Installation (Windows PC)</h3><ol class="instruction-steps"><li>Open Chrome or Microsoft Edge on your PC.</li><li>Navigate to: <a href="https://kalscouts.github.io/" target="_blank" rel="noopener">kalscouts.github.io/</a></li><li>Click the <strong>App Available / Install</strong> icon in the right side of the URL address bar.</li></ol>`,
+                screenTime: `<h3 class="step-subheading">Adjusting Microsoft Family Safety</h3><ol class="instruction-steps"><li>Visit <a href="https://account.microsoft.com/family" target="_blank" rel="noopener">account.microsoft.com/family</a> on the parent account.</li><li>Select your Scout's member profile and adjust screen time allowances under the <strong>Screen Time</strong> tab.</li></ol>`,
+                quickLinks: `<h3 class="step-subheading">Quick Options</h3><div class="quick-links-wrapper"><a class="quick-link-chip" href="https://kalscouts.github.io/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Launch Dashboard</a><a class="quick-link-chip" href="https://account.microsoft.com/family" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Microsoft Family Settings</a></div>` },
+            mac: { appSetup: `<h3 class="step-subheading">Web-App Installation (Mac)</h3><ol class="instruction-steps"><li>Open Safari or Google Chrome.</li><li>Navigate to: <a href="https://kalscouts.github.io/" target="_blank" rel="noopener">kalscouts.github.io/</a></li><li>Drag the URL address from the browser top bar into your Mac Dock or Favorites for quick access.</li></ol>`,
+                screenTime: `<h3 class="step-subheading">Adjusting macOS Screen Time</h3><ol class="instruction-steps"><li>Open <strong>System Settings</strong> &gt; <strong>Screen Time</strong>.</li><li>Review Downtime & App Limits to allow browser access during event hours.</li></ol>`,
+                quickLinks: `<h3 class="step-subheading">Quick Options</h3><div class="quick-links-wrapper"><a class="quick-link-chip" href="https://kalscouts.github.io/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Launch Dashboard</a></div>` },
+            chromebook: { appSetup: `<h3 class="step-subheading">Web-App Installation (Chromebook)</h3><ol class="instruction-steps"><li>Open Chrome on your Chromebook.</li><li>Navigate to: <a href="https://kalscouts.github.io/" target="_blank" rel="noopener">kalscouts.github.io/</a></li><li>Click the 3 dots menu &gt; <strong>Save and Share</strong> &gt; <strong>Create Shortcut</strong> to pin it to your shelf.</li></ol>`,
+                screenTime: `<h3 class="step-subheading">Adjusting ChromeOS Limits</h3><ol class="instruction-steps"><li>Manage app timers and bonus time directly via the <strong>Google Family Link</strong> parent app.</li></ol>`,
+                quickLinks: `<h3 class="step-subheading">Quick Options</h3><div class="quick-links-wrapper"><a class="quick-link-chip" href="https://kalscouts.github.io/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Launch Dashboard</a><a class="quick-link-chip" href="https://families.google.com/familylink/" target="_blank" rel="noopener"><svg><use href="#icon-external"></use></svg>Family Link</a></div>` }
         };
 
         const deviceButtons = document.querySelectorAll('.device-tab-btn');
@@ -1585,43 +578,27 @@ minecraft.scoutlink.net</div>
         function renderDeviceInstructions(deviceKey) {
             const data = deviceDataConfig[deviceKey];
             if (!data) return;
-
             deviceContentContainer.style.animation = 'none';
-            deviceContentContainer.offsetHeight; // force reflow
+            deviceContentContainer.offsetHeight;
             deviceContentContainer.style.animation = null;
-
             deviceContentContainer.innerHTML = data.appSetup + data.screenTime + data.quickLinks;
         }
 
         function handleDeviceTabClick(event) {
-            deviceButtons.forEach(btn => {
-                btn.classList.remove('is-active');
-                btn.setAttribute('aria-pressed', 'false');
-            });
-
+            deviceButtons.forEach(btn => { btn.classList.remove('is-active'); btn.setAttribute('aria-pressed', 'false'); });
             const clickedButton = event.currentTarget;
             clickedButton.classList.add('is-active');
             clickedButton.setAttribute('aria-pressed', 'true');
-
             const deviceKey = clickedButton.getAttribute('data-device');
             renderDeviceInstructions(deviceKey);
-
-            try {
-                localStorage.setItem('jotajoti_preferred_device', deviceKey);
-            } catch (e) {}
+            try { localStorage.setItem('jotajoti_preferred_device', deviceKey); } catch (e) {}
         }
-
-        deviceButtons.forEach(btn => {
-            btn.addEventListener('click', handleDeviceTabClick);
-        });
+        deviceButtons.forEach(btn => btn.addEventListener('click', handleDeviceTabClick));
 
         function detectLikelyDevice() {
             const ua = (navigator.userAgent || '').toLowerCase();
             const platform = (navigator.platform || '').toLowerCase();
-
-            if (/iphone|ipad|ipod/.test(ua) || (platform === 'macintel' && navigator.maxTouchPoints > 1)) {
-                return 'ios';
-            }
+            if (/iphone|ipad|ipod/.test(ua) || (platform === 'macintel' && navigator.maxTouchPoints > 1)) return 'ios';
             if (/android/.test(ua)) return 'android';
             if (/cros/.test(ua)) return 'chromebook';
             if (/win/.test(platform) || /windows/.test(ua)) return 'windows';
@@ -1638,7 +615,6 @@ minecraft.scoutlink.net</div>
             const totalTasks = taskItems.length;
             const completedTasks = document.querySelectorAll('.task-item.is-completed').length;
             const percentage = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
-            
             progressBarFill.style.width = `${percentage}%`;
             progressBarText.textContent = `${completedTasks} of ${totalTasks} steps completed`;
         }
@@ -1646,7 +622,6 @@ minecraft.scoutlink.net</div>
         function toggleTaskState(taskElement) {
             const taskId = taskElement.getAttribute('data-task-id');
             const isCurrentlyCompleted = taskElement.classList.contains('is-completed');
-            
             if (isCurrentlyCompleted) {
                 taskElement.classList.remove('is-completed');
                 taskElement.setAttribute('aria-checked', 'false');
@@ -1656,18 +631,11 @@ minecraft.scoutlink.net</div>
                 taskElement.setAttribute('aria-checked', 'true');
                 try { localStorage.setItem(STORAGE_KEY_PREFIX + taskId, 'true'); } catch (e) {}
             }
-            
             updateProgressBar();
         }
-
         taskItems.forEach(item => {
             item.addEventListener('click', (e) => toggleTaskState(e.currentTarget));
-            item.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggleTaskState(e.currentTarget);
-                }
-            });
+            item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleTaskState(e.currentTarget); } });
         });
 
         function startCountdown() {
@@ -1676,30 +644,19 @@ minecraft.scoutlink.net</div>
             const hoursEl = document.getElementById('countdown-hours');
             const minsEl = document.getElementById('countdown-minutes');
             const secsEl = document.getElementById('countdown-seconds');
-
             function update() {
                 const now = new Date().getTime();
                 const diff = targetDate - now;
-
-                if (diff <= 0) {
-                    daysEl.textContent = "00";
-                    hoursEl.textContent = "00";
-                    minsEl.textContent = "00";
-                    secsEl.textContent = "00";
-                    return;
-                }
-
+                if (diff <= 0) { daysEl.textContent = "00"; hoursEl.textContent = "00"; minsEl.textContent = "00"; secsEl.textContent = "00"; return; }
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
                 daysEl.textContent = days.toString().padStart(2, '0');
                 hoursEl.textContent = hours.toString().padStart(2, '0');
                 minsEl.textContent = mins.toString().padStart(2, '0');
                 secsEl.textContent = secs.toString().padStart(2, '0');
             }
-
             update();
             setInterval(update, 1000);
         }
@@ -1708,51 +665,25 @@ minecraft.scoutlink.net</div>
         const toastElement = document.getElementById('toast-notification');
         const toastMessage = document.getElementById('toast-message');
         let toastTimeoutId = null;
-
         function showToast(msg) {
             toastMessage.textContent = msg;
             toastElement.classList.add('is-visible');
             if (toastTimeoutId) clearTimeout(toastTimeoutId);
-            toastTimeoutId = setTimeout(() => {
-                toastElement.classList.remove('is-visible');
-            }, 3000);
+            toastTimeoutId = setTimeout(() => { toastElement.classList.remove('is-visible'); }, 3000);
         }
-
         function handleCopyDomains() {
-            const domainText = [
-                "kalscouts.github.io/jota-joti-app/",
-                "chat.jotajoti.info",
-                "webchat.scoutlink.net",
-                "jotajoti.info",
-                "minecraft.scoutlink.net"
-            ].join('\n');
-
+            const domainText = ["kalscouts.github.io/","chat.jotajoti.info","webchat.scoutlink.net","jotajoti.info","minecraft.scoutlink.net"].join('\n');
             if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(domainText)
-                    .then(() => showToast('Domains copied to clipboard!'))
-                    .catch(() => fallbackCopy(domainText));
-            } else {
-                fallbackCopy(domainText);
-            }
+                navigator.clipboard.writeText(domainText).then(() => showToast('Domains copied to clipboard!')).catch(() => fallbackCopy(domainText));
+            } else { fallbackCopy(domainText); }
         }
-
         function fallbackCopy(text) {
             const ta = document.createElement("textarea");
-            ta.value = text;
-            ta.style.position = "fixed";
-            ta.style.opacity = "0";
-            document.body.appendChild(ta);
-            ta.focus();
-            ta.select();
-            try {
-                document.execCommand('copy');
-                showToast('Domains copied to clipboard!');
-            } catch (e) {
-                showToast('Copy failed. Please select text manually.');
-            }
+            ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+            document.body.appendChild(ta); ta.focus(); ta.select();
+            try { document.execCommand('copy'); showToast('Domains copied to clipboard!'); } catch (e) { showToast('Copy failed. Please select text manually.'); }
             document.body.removeChild(ta);
         }
-
         if (copyBtn) copyBtn.addEventListener('click', handleCopyDomains);
 
         const accordionTriggers = document.querySelectorAll('.accordion-trigger');
@@ -1760,50 +691,94 @@ minecraft.scoutlink.net</div>
             trigger.addEventListener('click', (e) => {
                 const parent = e.currentTarget.closest('.accordion-item');
                 const isOpen = parent.classList.contains('is-open');
+                if (isOpen) { parent.classList.remove('is-open'); e.currentTarget.setAttribute('aria-expanded', 'false'); }
+                else { parent.classList.add('is-open'); e.currentTarget.setAttribute('aria-expanded', 'true'); }
+            });
+        });
 
-                if (isOpen) {
-                    parent.classList.remove('is-open');
-                    e.currentTarget.setAttribute('aria-expanded', 'false');
+        /* Section forms are plain PDF links to the files in the repo root. */
+
+        function base64ToBlob(b64, mime) {
+            const byteChars = atob(b64);
+            const byteNumbers = new Array(byteChars.length);
+            for (let i = 0; i < byteChars.length; i++) byteNumbers[i] = byteChars.charCodeAt(i);
+            return new Blob([new Uint8Array(byteNumbers)], { type: mime });
+        }
+
+        function triggerBrowserDownload(b64, mime, filename) {
+            const blob = base64ToBlob(b64, mime);
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => URL.revokeObjectURL(url), 2000);
+        }
+
+        function getSectionShareUrl(sectionId) {
+            const base = window.location.href.split('#')[0];
+            return `${base}#${sectionId}`;
+        }
+
+        document.querySelectorAll('.btn-copy-link').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const sectionId = btn.getAttribute('data-section-id');
+                const sectionName = btn.getAttribute('data-section-name');
+                const url = getSectionShareUrl(sectionId);
+                try {
+                    if (navigator.clipboard && window.isSecureContext) {
+                        await navigator.clipboard.writeText(url);
+                    } else {
+                        fallbackCopy(url);
+                        return;
+                    }
+                    showToast(`${sectionName} link copied!`);
+                } catch (e) {
+                    fallbackCopy(url);
+                }
+            });
+        });
+
+        document.querySelectorAll('.btn-share-link').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const sectionId = btn.getAttribute('data-section-id');
+                const sectionName = btn.getAttribute('data-section-name');
+                const url = getSectionShareUrl(sectionId);
+                const shareText = `JOTA-JOTI 2026 — ${sectionName} permission form & details`;
+                if (navigator.share) {
+                    try {
+                        await navigator.share({ title: shareText, url });
+                    } catch (e) { /* user cancelled share sheet, no toast */ }
                 } else {
-                    parent.classList.add('is-open');
-                    e.currentTarget.setAttribute('aria-expanded', 'true');
+                    try {
+                        if (navigator.clipboard && window.isSecureContext) {
+                            await navigator.clipboard.writeText(url);
+                            showToast(`${sectionName} link copied to share!`);
+                        } else {
+                            fallbackCopy(url);
+                        }
+                    } catch (e) { fallbackCopy(url); }
                 }
             });
         });
 
         function initApp() {
             let defaultDevice = detectLikelyDevice();
-            try {
-                const saved = localStorage.getItem('jotajoti_preferred_device');
-                if (saved && deviceDataConfig[saved]) defaultDevice = saved;
-            } catch (e) {}
-
+            try { const saved = localStorage.getItem('jotajoti_preferred_device'); if (saved && deviceDataConfig[saved]) defaultDevice = saved; } catch (e) {}
             const initialBtn = document.querySelector(`.device-tab-btn[data-device="${defaultDevice}"]`);
-            if (initialBtn) {
-                initialBtn.click();
-            } else {
-                renderDeviceInstructions(defaultDevice);
-            }
-
+            if (initialBtn) initialBtn.click(); else renderDeviceInstructions(defaultDevice);
             taskItems.forEach(item => {
                 const taskId = item.getAttribute('data-task-id');
-                try {
-                    if (localStorage.getItem(STORAGE_KEY_PREFIX + taskId) === 'true') {
-                        item.classList.add('is-completed');
-                        item.setAttribute('aria-checked', 'true');
-                    }
-                } catch (e) {}
+                try { if (localStorage.getItem(STORAGE_KEY_PREFIX + taskId) === 'true') { item.classList.add('is-completed'); item.setAttribute('aria-checked', 'true'); } } catch (e) {}
             });
             updateProgressBar();
-
             startCountdown();
         }
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initApp);
-        } else {
-            initApp();
-        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initApp);
+        else initApp();
     </script>
 </body>
 </html>
