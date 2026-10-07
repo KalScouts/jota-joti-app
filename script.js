@@ -4,7 +4,7 @@
            COMBINED PORTAL CONFIGURATION
            ========================================================== */
 
-        const SIGNUP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeBhtFuVNzjqtAFOeluNfiA1hFPr1JXXfSx9xZcnivSV1fiUw/viewform?usp=header";
+        const SIGNUP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSevs4K7aNGjPOSBk9tjFZtShpqkRQUAOjVetaInhpaaOARFrA/viewform?usp=header";
         const EVENT_START_ISO = "2026-10-16T00:00:00+08:00";
         const EVENT_START_MS = new Date(EVENT_START_ISO).getTime();
         const FINAL_DAY_MS = EVENT_START_MS - (24 * 60 * 60 * 1000);
